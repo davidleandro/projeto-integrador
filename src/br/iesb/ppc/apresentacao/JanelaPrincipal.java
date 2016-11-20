@@ -27,83 +27,83 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        BarraMenu = new javax.swing.JMenuBar();
+        menuAta = new javax.swing.JMenu();
+        menuItemListarAta = new javax.swing.JMenuItem();
+        menuItemCadastrarAta = new javax.swing.JMenuItem();
+        menuDisciplina = new javax.swing.JMenu();
+        menuItemListarDisciplina = new javax.swing.JMenuItem();
+        menuItemCadastrarDisciplina = new javax.swing.JMenuItem();
+        menuGrade = new javax.swing.JMenu();
+        menuItemListarGrade = new javax.swing.JMenuItem();
+        menuItemCadastrarGrade = new javax.swing.JMenuItem();
+        menuReferenciaBibliografica = new javax.swing.JMenu();
+        menuItemListarReferenciaBibliografica = new javax.swing.JMenuItem();
+        menuItemCadastrarReferenciaBibliografica = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Ata");
+        menuAta.setText("Ata");
 
-        jMenuItem1.setText("Listar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemListarAta.setText("Listar");
+        menuItemListarAta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItemListarAtaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuAta.add(menuItemListarAta);
 
-        jMenuItem2.setText("Cadastrar");
-        jMenu1.add(jMenuItem2);
+        menuItemCadastrarAta.setText("Cadastrar");
+        menuAta.add(menuItemCadastrarAta);
 
-        jMenuBar1.add(jMenu1);
+        BarraMenu.add(menuAta);
 
-        jMenu2.setText("Disciplina");
+        menuDisciplina.setText("Disciplina");
 
-        jMenuItem3.setText("Listar");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        menuItemListarDisciplina.setText("Listar");
+        menuItemListarDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                menuItemListarDisciplinaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        menuDisciplina.add(menuItemListarDisciplina);
 
-        jMenuItem4.setText("Cadastrar");
-        jMenu2.add(jMenuItem4);
+        menuItemCadastrarDisciplina.setText("Cadastrar");
+        menuDisciplina.add(menuItemCadastrarDisciplina);
 
-        jMenuBar1.add(jMenu2);
+        BarraMenu.add(menuDisciplina);
 
-        jMenu3.setText("Grade");
+        menuGrade.setText("Grade");
 
-        jMenuItem5.setText("Listar");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        menuItemListarGrade.setText("Listar");
+        menuItemListarGrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                menuItemListarGradeActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        menuGrade.add(menuItemListarGrade);
 
-        jMenuItem6.setText("Cadastrar");
-        jMenu3.add(jMenuItem6);
+        menuItemCadastrarGrade.setText("Cadastrar");
+        menuGrade.add(menuItemCadastrarGrade);
 
-        jMenuBar1.add(jMenu3);
+        BarraMenu.add(menuGrade);
 
-        jMenu4.setText("Referência Bibliográfica");
+        menuReferenciaBibliografica.setText("Referência Bibliográfica");
 
-        jMenuItem7.setText("Listar");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        menuItemListarReferenciaBibliografica.setText("Listar");
+        menuItemListarReferenciaBibliografica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                menuItemListarReferenciaBibliograficaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem7);
+        menuReferenciaBibliografica.add(menuItemListarReferenciaBibliografica);
 
-        jMenuItem8.setText("Cadastrar");
-        jMenu4.add(jMenuItem8);
+        menuItemCadastrarReferenciaBibliografica.setText("Cadastrar");
+        menuReferenciaBibliografica.add(menuItemCadastrarReferenciaBibliografica);
 
-        jMenuBar1.add(jMenu4);
+        BarraMenu.add(menuReferenciaBibliografica);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(BarraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,21 +119,21 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItemListarAtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarAtaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItemListarAtaActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void menuItemListarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarDisciplinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_menuItemListarDisciplinaActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void menuItemListarGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarGradeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_menuItemListarGradeActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void menuItemListarReferenciaBibliograficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarReferenciaBibliograficaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_menuItemListarReferenciaBibliograficaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,18 +174,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuBar BarraMenu;
+    private javax.swing.JMenu menuAta;
+    private javax.swing.JMenu menuDisciplina;
+    private javax.swing.JMenu menuGrade;
+    private javax.swing.JMenuItem menuItemCadastrarAta;
+    private javax.swing.JMenuItem menuItemCadastrarDisciplina;
+    private javax.swing.JMenuItem menuItemCadastrarGrade;
+    private javax.swing.JMenuItem menuItemCadastrarReferenciaBibliografica;
+    private javax.swing.JMenuItem menuItemListarAta;
+    private javax.swing.JMenuItem menuItemListarDisciplina;
+    private javax.swing.JMenuItem menuItemListarGrade;
+    private javax.swing.JMenuItem menuItemListarReferenciaBibliografica;
+    private javax.swing.JMenu menuReferenciaBibliografica;
     // End of variables declaration//GEN-END:variables
 }
