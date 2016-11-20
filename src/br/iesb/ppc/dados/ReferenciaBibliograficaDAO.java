@@ -11,12 +11,15 @@ import br.iesb.ppc.entidade.ReferenciaBibliografica;
 public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica>  {
 
     public void inserir(ReferenciaBibliografica entidade) throws DadosException {
+        // TODO
     }
 
     public void alterar(ReferenciaBibliografica entidade) throws DadosException {
+        // TODO
     }
 
     public void excluir(ReferenciaBibliografica entidade) throws DadosException {
+        // TODO
     }
 
     public ReferenciaBibliografica consultar(int id) throws DadosException {

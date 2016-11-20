@@ -31,9 +31,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuAta = new javax.swing.JMenu();
         menuItemListarAta = new javax.swing.JMenuItem();
         menuItemCadastrarAta = new javax.swing.JMenuItem();
-        menuDisciplina = new javax.swing.JMenu();
-        menuItemListarDisciplina = new javax.swing.JMenuItem();
-        menuItemCadastrarDisciplina = new javax.swing.JMenuItem();
+        menuPlanoDeEnsino = new javax.swing.JMenu();
+        menuItemListarPlanoDeEnsino = new javax.swing.JMenuItem();
+        menuItemCadastrarPlanoDeEnsino = new javax.swing.JMenuItem();
         menuGrade = new javax.swing.JMenu();
         menuItemListarGrade = new javax.swing.JMenuItem();
         menuItemCadastrarGrade = new javax.swing.JMenuItem();
@@ -58,20 +58,25 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         BarraMenu.add(menuAta);
 
-        menuDisciplina.setText("Disciplina");
+        menuPlanoDeEnsino.setText("Plano de ensino");
 
-        menuItemListarDisciplina.setText("Listar");
-        menuItemListarDisciplina.addActionListener(new java.awt.event.ActionListener() {
+        menuItemListarPlanoDeEnsino.setText("Listar");
+        menuItemListarPlanoDeEnsino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemListarDisciplinaActionPerformed(evt);
+                menuItemListarPlanoDeEnsinoActionPerformed(evt);
             }
         });
-        menuDisciplina.add(menuItemListarDisciplina);
+        menuPlanoDeEnsino.add(menuItemListarPlanoDeEnsino);
 
-        menuItemCadastrarDisciplina.setText("Cadastrar");
-        menuDisciplina.add(menuItemCadastrarDisciplina);
+        menuItemCadastrarPlanoDeEnsino.setText("Cadastrar");
+        menuItemCadastrarPlanoDeEnsino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastrarPlanoDeEnsinoActionPerformed(evt);
+            }
+        });
+        menuPlanoDeEnsino.add(menuItemCadastrarPlanoDeEnsino);
 
-        BarraMenu.add(menuDisciplina);
+        BarraMenu.add(menuPlanoDeEnsino);
 
         menuGrade.setText("Grade");
 
@@ -99,6 +104,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuReferenciaBibliografica.add(menuItemListarReferenciaBibliografica);
 
         menuItemCadastrarReferenciaBibliografica.setText("Cadastrar");
+        menuItemCadastrarReferenciaBibliografica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastrarReferenciaBibliograficaActionPerformed(evt);
+            }
+        });
         menuReferenciaBibliografica.add(menuItemCadastrarReferenciaBibliografica);
 
         BarraMenu.add(menuReferenciaBibliografica);
@@ -123,17 +133,25 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemListarAtaActionPerformed
 
-    private void menuItemListarDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarDisciplinaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemListarDisciplinaActionPerformed
+    private void menuItemListarPlanoDeEnsinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarPlanoDeEnsinoActionPerformed
+        ListaPlanoDeEnsino dialog = new ListaPlanoDeEnsino(new javax.swing.JFrame(), true);
+    }//GEN-LAST:event_menuItemListarPlanoDeEnsinoActionPerformed
 
     private void menuItemListarGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarGradeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemListarGradeActionPerformed
 
     private void menuItemListarReferenciaBibliograficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarReferenciaBibliograficaActionPerformed
-        // TODO add your handling code here:
+        ListaReferenciaBibliografica dialog = new ListaReferenciaBibliografica(new javax.swing.JFrame(), true);
     }//GEN-LAST:event_menuItemListarReferenciaBibliograficaActionPerformed
+
+    private void menuItemCadastrarPlanoDeEnsinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarPlanoDeEnsinoActionPerformed
+        FormPlanoDeEnsino dialog = new FormPlanoDeEnsino(new javax.swing.JFrame(), true);
+    }//GEN-LAST:event_menuItemCadastrarPlanoDeEnsinoActionPerformed
+
+    private void menuItemCadastrarReferenciaBibliograficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarReferenciaBibliograficaActionPerformed
+        FormReferenciaBibliografica dialog = new FormReferenciaBibliografica(new javax.swing.JFrame(), true);
+    }//GEN-LAST:event_menuItemCadastrarReferenciaBibliograficaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,16 +194,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JMenu menuAta;
-    private javax.swing.JMenu menuDisciplina;
     private javax.swing.JMenu menuGrade;
     private javax.swing.JMenuItem menuItemCadastrarAta;
-    private javax.swing.JMenuItem menuItemCadastrarDisciplina;
     private javax.swing.JMenuItem menuItemCadastrarGrade;
+    private javax.swing.JMenuItem menuItemCadastrarPlanoDeEnsino;
     private javax.swing.JMenuItem menuItemCadastrarReferenciaBibliografica;
     private javax.swing.JMenuItem menuItemListarAta;
-    private javax.swing.JMenuItem menuItemListarDisciplina;
     private javax.swing.JMenuItem menuItemListarGrade;
+    private javax.swing.JMenuItem menuItemListarPlanoDeEnsino;
     private javax.swing.JMenuItem menuItemListarReferenciaBibliografica;
+    private javax.swing.JMenu menuPlanoDeEnsino;
     private javax.swing.JMenu menuReferenciaBibliografica;
     // End of variables declaration//GEN-END:variables
 }
