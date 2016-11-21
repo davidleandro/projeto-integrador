@@ -5,6 +5,9 @@
  */
 package br.iesb.ppc.apresentacao;
 
+import java.awt.Color;
+import javax.swing.JDialog;
+
 /**
  *
  * @author tom
@@ -17,6 +20,8 @@ public class FormGrade extends javax.swing.JDialog {
     public FormGrade(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
     }
 
     /**
@@ -28,64 +33,147 @@ public class FormGrade extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        modalidadeRadioButton = new javax.swing.ButtonGroup();
+        modalidadeLabel = new javax.swing.JLabel();
+        radioEAD = new javax.swing.JRadioButton();
+        radioPresencial = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        cursoComboBox = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        turmaComboBox = new javax.swing.JComboBox<>();
+        voltarFormGrade = new javax.swing.JButton();
+        continuarFormGrade = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+
+        modalidadeLabel.setText("Modalidade:*");
+
+        modalidadeRadioButton.add(radioEAD);
+        radioEAD.setSelected(true);
+        radioEAD.setText("EAD");
+        radioEAD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioEADActionPerformed(evt);
+            }
+        });
+
+        modalidadeRadioButton.add(radioPresencial);
+        radioPresencial.setText("Presencial");
+        radioPresencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioPresencialActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Curso:");
+
+        cursoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Turma:");
+
+        turmaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        voltarFormGrade.setText("Voltar");
+        voltarFormGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarFormGradeActionPerformed(evt);
+            }
+        });
+
+        continuarFormGrade.setText("Continuar");
+        continuarFormGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                continuarFormGradeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cursoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(modalidadeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioEAD)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radioPresencial))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(turmaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 135, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(continuarFormGrade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(voltarFormGrade)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modalidadeLabel)
+                    .addComponent(radioEAD)
+                    .addComponent(radioPresencial))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cursoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(turmaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(voltarFormGrade)
+                    .addComponent(continuarFormGrade))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormGrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormGrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormGrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormGrade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void voltarFormGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarFormGradeActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_voltarFormGradeActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FormGrade dialog = new FormGrade(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void continuarFormGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarFormGradeActionPerformed
+        FormGerenciarGrade formGrade = new FormGerenciarGrade(new javax.swing.JFrame(), true);
+        this.dispose();
+    }//GEN-LAST:event_continuarFormGradeActionPerformed
+
+    private void radioEADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEADActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioEADActionPerformed
+
+    private void radioPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPresencialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioPresencialActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton continuarFormGrade;
+    private javax.swing.JComboBox<String> cursoComboBox;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel modalidadeLabel;
+    private javax.swing.ButtonGroup modalidadeRadioButton;
+    private javax.swing.JRadioButton radioEAD;
+    private javax.swing.JRadioButton radioPresencial;
+    private javax.swing.JComboBox<String> turmaComboBox;
+    private javax.swing.JButton voltarFormGrade;
     // End of variables declaration//GEN-END:variables
 }
