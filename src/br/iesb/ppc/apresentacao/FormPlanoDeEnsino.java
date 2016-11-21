@@ -5,6 +5,8 @@
  */
 package br.iesb.ppc.apresentacao;
 
+import javax.swing.JDialog;
+
 /**
  *
  * @author rafael
@@ -17,6 +19,7 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
     public FormPlanoDeEnsino(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
 

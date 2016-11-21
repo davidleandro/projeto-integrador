@@ -5,6 +5,8 @@
  */
 package br.iesb.ppc.apresentacao;
 
+import javax.swing.JDialog;
+
 /**
  *
  * @author rafael
@@ -17,6 +19,7 @@ public class ListaPlanoDeEnsino extends javax.swing.JDialog {
     public ListaPlanoDeEnsino(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
 
@@ -175,7 +178,7 @@ public class ListaPlanoDeEnsino extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
 

@@ -5,6 +5,8 @@
  */
 package br.iesb.ppc.apresentacao;
 
+import javax.swing.JDialog;
+
 /**
  *
  * @author david
@@ -17,6 +19,7 @@ public class ListaReferenciaBibliografica extends javax.swing.JDialog {
     public ListaReferenciaBibliografica(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
 
