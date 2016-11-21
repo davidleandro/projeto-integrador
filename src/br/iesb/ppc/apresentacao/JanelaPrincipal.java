@@ -28,6 +28,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         BarraMenu = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        sairMenuArquivo = new javax.swing.JMenuItem();
         menuAta = new javax.swing.JMenu();
         menuItemListarAta = new javax.swing.JMenuItem();
         menuItemCadastrarAta = new javax.swing.JMenuItem();
@@ -42,6 +44,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuItemCadastrarReferenciaBibliografica = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Arquivo");
+
+        sairMenuArquivo.setText("Sair");
+        sairMenuArquivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairMenuArquivoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(sairMenuArquivo);
+
+        BarraMenu.add(jMenu1);
 
         menuAta.setText("Ata");
 
@@ -89,6 +103,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuGrade.add(menuItemListarGrade);
 
         menuItemCadastrarGrade.setText("Cadastrar");
+        menuItemCadastrarGrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastrarGradeActionPerformed(evt);
+            }
+        });
         menuGrade.add(menuItemCadastrarGrade);
 
         BarraMenu.add(menuGrade);
@@ -138,7 +157,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarPlanoDeEnsinoActionPerformed
 
     private void menuItemListarGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarGradeActionPerformed
-        // TODO add your handling code here:
+        FormGrade dialog = new FormGrade(new javax.swing.JFrame(), true);
     }//GEN-LAST:event_menuItemListarGradeActionPerformed
 
     private void menuItemListarReferenciaBibliograficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarReferenciaBibliograficaActionPerformed
@@ -152,6 +171,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void menuItemCadastrarReferenciaBibliograficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarReferenciaBibliograficaActionPerformed
         FormReferenciaBibliografica dialog = new FormReferenciaBibliografica(new javax.swing.JFrame(), true);
     }//GEN-LAST:event_menuItemCadastrarReferenciaBibliograficaActionPerformed
+
+    private void menuItemCadastrarGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarGradeActionPerformed
+        FormGrade dialog = new FormGrade(new javax.swing.JFrame(), true);
+    }//GEN-LAST:event_menuItemCadastrarGradeActionPerformed
+
+    private void sairMenuArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairMenuArquivoActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_sairMenuArquivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,6 +220,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu menuAta;
     private javax.swing.JMenu menuGrade;
     private javax.swing.JMenuItem menuItemCadastrarAta;
@@ -205,5 +233,6 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemListarReferenciaBibliografica;
     private javax.swing.JMenu menuPlanoDeEnsino;
     private javax.swing.JMenu menuReferenciaBibliografica;
+    private javax.swing.JMenuItem sairMenuArquivo;
     // End of variables declaration//GEN-END:variables
 }
