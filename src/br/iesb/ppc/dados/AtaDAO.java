@@ -36,7 +36,7 @@ public class AtaDAO implements DAO<Ata> {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Ata ata = new Ata();
-                ata.setData(rs.getDate(1));
+                ata.setData(rs.getString(1));
                 ata.setAssunto(rs.getString(2));
                 ata.setSala(rs.getString(3));
                 ata.setDescricao(rs.getString(4));

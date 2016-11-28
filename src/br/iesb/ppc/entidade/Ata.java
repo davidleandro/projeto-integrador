@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Ata implements Serializable {
 
-    private Date data;
+    private String data;
     private String horaInicio;
     private String horaFim;
     private String assunto;
@@ -14,7 +14,7 @@ public class Ata implements Serializable {
     private String sala;
     private String descricao;
 
-    public Ata(Date data, String horaInicio, String horaFim, String assunto, String sede, String sala, String descricao) {
+    public Ata(String data, String horaInicio, String horaFim, String assunto, String sede, String sala, String descricao) {
         this.data = data;
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
@@ -27,11 +27,11 @@ public class Ata implements Serializable {
     public Ata() {
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
