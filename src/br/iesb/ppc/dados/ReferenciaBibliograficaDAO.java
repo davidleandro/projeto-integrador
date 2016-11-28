@@ -7,11 +7,27 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.ArrayList;
 import br.iesb.ppc.entidade.ReferenciaBibliografica;
+import java.sql.PreparedStatement;
 
 public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica>  {
 
     public void inserir(ReferenciaBibliografica entidade) throws DadosException {
-        // TODO
+        Connection conexao = ConexaoBD.getConexao();
+        
+        try {
+            String sql = "INSERT INTO referencia_bibliografica(autor, titulo, editora, ano, quantidade) VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            
+            pstmt.setString(1, entidade.getAutor());
+            pstmt.setString(2, entidade.getTitulo());
+            pstmt.setString(3, entidade.getEditora());
+            pstmt.setString(4, entidade.getAno());
+            pstmt.setString(5, entidade.getQuantidade());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
     }
 
     public void alterar(ReferenciaBibliografica entidade) throws DadosException {

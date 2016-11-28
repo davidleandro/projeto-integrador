@@ -40,7 +40,12 @@ public class ReferenciaBibliograficaBO implements BO<ReferenciaBibliografica> {
     }
 
     public void inserir(ReferenciaBibliografica entidade) throws NegocioException {
-        // TODO
+        DAO<ReferenciaBibliografica> dao = new ReferenciaBibliograficaDAO();
+        try {
+            dao.inserir(entidade);
+        } catch (DadosException e) {
+            throw new NegocioException("Erro no sistema", e);
+        }
     }
 
     public void alterar(ReferenciaBibliografica entidade) throws NegocioException {

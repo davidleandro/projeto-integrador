@@ -167,15 +167,15 @@ public class FormReferenciaBibliografica extends javax.swing.JDialog {
 
         try {
             referenciaBO.validar(referenciaBibliografica);
-            // SAVE AQUI
+            referenciaBO.inserir(referenciaBibliografica);
+            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
             if (e.getCause() != null) {
                 tipoMsg = JOptionPane.ERROR_MESSAGE;
             }
-            JOptionPane.showMessageDialog(this,
-                e.getMessage(), "Mensagem", tipoMsg);
-            }
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
