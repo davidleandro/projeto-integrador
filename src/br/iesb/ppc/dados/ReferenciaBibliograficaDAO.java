@@ -27,7 +27,7 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
     }
 
     public List<ReferenciaBibliografica> listar() throws DadosException {
-        
+
         List<ReferenciaBibliografica> lista = new ArrayList<ReferenciaBibliografica>();
         Connection conexao = ConexaoBD.getConexao();
         try {
@@ -39,8 +39,8 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
                 referencia_bibliografica.setAutor(rs.getString(1));
                 referencia_bibliografica.setTitulo(rs.getString(2));
                 referencia_bibliografica.setEditora(rs.getString(3));
-                referencia_bibliografica.setAno(rs.getInt(4));
-                referencia_bibliografica.setQuantidade(rs.getInt(5));
+                referencia_bibliografica.setAno(rs.getString(4));
+                referencia_bibliografica.setQuantidade(rs.getString(5));
                 lista.add(referencia_bibliografica);
             }
             stmt.close();

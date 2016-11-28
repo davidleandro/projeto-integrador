@@ -8,8 +8,8 @@ public class ReferenciaBibliografica implements Serializable {
     private String autor;
     private String titulo;
     private String editora;
-    private int ano;
-    private int quantidade;
+    private String ano;
+    private String quantidade;
 
     public String getAutor() {
         return autor;
@@ -35,19 +35,19 @@ public class ReferenciaBibliografica implements Serializable {
         this.editora = editora;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
