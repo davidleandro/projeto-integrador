@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ata` (
   `assunto` VARCHAR(45) NULL,
   `sede` VARCHAR(45) NULL,
   `sala` VARCHAR(45) NULL,
-  `descricao` VARCHAR(45) NULL,
+  `descricao` text NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

@@ -13,11 +13,11 @@ public class AtaDAO implements DAO<Ata> {
 
     public void inserir(Ata entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        
+
         try {
             String sql = "INSERT INTO ata(data, horaInicio, horaFim, assunto, sede, sala, descricao) VALUES(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conexao.prepareStatement(sql);
-            
+
             pstmt.setString(1, entidade.getData());
             pstmt.setString(2, entidade.getHoraInicio());
             pstmt.setString(3, entidade.getHoraFim());
@@ -51,13 +51,13 @@ public class AtaDAO implements DAO<Ata> {
         Connection conexao = ConexaoBD.getConexao();
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "select * data, assunto, sede, descricao from ata";
+            String sql = "select data, assunto, sede, descricao from ata";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Ata ata = new Ata();
                 ata.setData(rs.getString(1));
                 ata.setAssunto(rs.getString(2));
-                ata.setSala(rs.getString(3));
+                ata.setSede(rs.getString(3));
                 ata.setDescricao(rs.getString(4));
                 lista.add(ata);
             }
