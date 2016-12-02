@@ -37,7 +37,7 @@ public class FormAtas extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        botaoSalvar = new javax.swing.JButton();
         inputData = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -66,10 +66,10 @@ public class FormAtas extends javax.swing.JDialog {
 
         jLabel1.setText("Data:*");
 
-        jButton2.setText("Salvar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoSalvar.setText("Salvar");
+        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoSalvarActionPerformed(evt);
             }
         });
 
@@ -140,7 +140,7 @@ public class FormAtas extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(jLabel11)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(botaoSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addComponent(inputData, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,14 +206,14 @@ public class FormAtas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(botaoSalvar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         Ata ata = new Ata();
 
         ata.setData(inputData.getText());
@@ -229,6 +229,8 @@ public class FormAtas extends javax.swing.JDialog {
 
         try {
             ataBO.validar(ata);
+            ataBO.inserir(ata);
+            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
             // SAVE AQUI
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
@@ -238,7 +240,7 @@ public class FormAtas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this,
                     e.getMessage(), "Mensagem", tipoMsg);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botaoSalvarActionPerformed
 
     private void inputDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDataActionPerformed
         // TODO add your handling code here:
@@ -273,6 +275,7 @@ public class FormAtas extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoSalvar;
     private javax.swing.JTextField inputAssunto;
     private javax.swing.JTextField inputData;
     private javax.swing.JTextArea inputDescricao;
@@ -281,7 +284,6 @@ public class FormAtas extends javax.swing.JDialog {
     private javax.swing.JTextField inputSala;
     private javax.swing.JTextField inputSede;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

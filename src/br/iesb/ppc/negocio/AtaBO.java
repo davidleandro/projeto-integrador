@@ -45,7 +45,13 @@ public class AtaBO implements BO<Ata> {
     }
 
     public void inserir(Ata entidade) throws NegocioException {
-        // TODO
+        DAO<Ata> dao = new AtaDAO();
+        try {
+            dao.inserir(entidade);
+        } catch (DadosException e) {
+            System.out.println(e.getMessage());
+            throw new NegocioException("Erro no sistema", e);
+        }
     }
 
     public void alterar(Ata entidade) throws NegocioException {
