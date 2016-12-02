@@ -69,4 +69,9 @@ public class AtaDAO implements DAO<Ata> {
         return lista;
     }
 
+    @Override
+    public String[][] listar(Ata entidade) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

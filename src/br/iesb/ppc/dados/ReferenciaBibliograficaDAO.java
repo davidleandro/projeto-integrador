@@ -67,4 +67,9 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
         return lista;
     }
 
+    @Override
+    public String[][] listar(ReferenciaBibliografica entidade) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
