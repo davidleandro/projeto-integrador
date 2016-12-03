@@ -5,8 +5,13 @@
  */
 package br.iesb.ppc.apresentacao;
 
-import java.awt.Color;
+import br.iesb.ppc.entidade.GerenciarGrade;
+import br.iesb.ppc.negocio.BO;
+import br.iesb.ppc.negocio.FormGradeBO;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,7 +55,6 @@ public class FormGrade extends javax.swing.JDialog {
         modalidadeLabel.setText("Modalidade:*");
 
         modalidadeRadioButton.add(radioEAD);
-        radioEAD.setSelected(true);
         radioEAD.setText("EAD");
         radioEAD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,11 +72,19 @@ public class FormGrade extends javax.swing.JDialog {
 
         jLabel2.setText("Curso:");
 
-        cursoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cursoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cursoComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Turma:");
 
-        turmaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        turmaComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turmaComboBoxActionPerformed(evt);
+            }
+        });
 
         voltarFormGrade.setText("Voltar");
         voltarFormGrade.addActionListener(new java.awt.event.ActionListener() {
@@ -155,15 +167,88 @@ public class FormGrade extends javax.swing.JDialog {
     }//GEN-LAST:event_continuarFormGradeActionPerformed
 
     private void radioEADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEADActionPerformed
-        // TODO add your handling code here:
+        FormGrade();
     }//GEN-LAST:event_radioEADActionPerformed
 
     private void radioPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPresencialActionPerformed
-        // TODO add your handling code here:
+        FormGrade();
     }//GEN-LAST:event_radioPresencialActionPerformed
 
-    
+    private void cursoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cursoComboBoxActionPerformed
+        nomeCurso = (String) cursoComboBox.getSelectedItem();
+        
+        FormGrade(nomeCurso);
+    }//GEN-LAST:event_cursoComboBoxActionPerformed
 
+    private void turmaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turmaComboBoxActionPerformed
+//        nomeCurso = (String) cursoComboBox.getSelectedItem();
+//        
+//        FormGrade(nomeCurso, turma);
+    }//GEN-LAST:event_turmaComboBoxActionPerformed
+
+    private void FormGrade(){
+        GerenciarGrade gerenciarGrade = new GerenciarGrade();
+        
+        if(radioEAD.isSelected()){
+            gerenciarGrade.setModalidadeTipo(1);
+        }else if(radioPresencial.isSelected()){
+            gerenciarGrade.setModalidadeTipo(2);
+        }
+        cursoComboBox.removeAllItems();
+        turmaComboBox.removeAllItems();
+        
+        BO<GerenciarGrade> bo = new FormGradeBO();
+        
+        try {
+            List<GerenciarGrade> lista = bo.listar();
+            
+            DefaultComboBoxModel modelCurso = new DefaultComboBoxModel();
+
+            while(!lista.isEmpty()){
+                modelCurso.addElement(lista);
+            }
+            cursoComboBox.setModel(modelCurso);
+            
+            nomeCurso = (String) cursoComboBox.getSelectedItem();
+            
+            FormGrade(nomeCurso);
+        } catch (Exception e) {
+            int tipoMsg = JOptionPane.WARNING_MESSAGE;
+            if (e.getCause() != null) {
+                tipoMsg = JOptionPane.ERROR_MESSAGE;
+            }
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
+        }
+    }
+
+    private List FormGrade(String nomeCurso){
+        GerenciarGrade gerenciarGrade = new GerenciarGrade();
+        
+        gerenciarGrade.setNomeCurso(nomeCurso);
+        
+        BO<GerenciarGrade> bo = new FormGradeBO();
+        
+        try {
+            List<GerenciarGrade> listaTurma = bo.listarTurma();
+            
+            DefaultComboBoxModel modelTurma = new DefaultComboBoxModel();
+            
+            while(!listaTurma.isEmpty()){
+                modelTurma.addElement(listaTurma);
+            }
+            cursoComboBox.setModel(modelTurma);
+        } catch (Exception e) {
+            int tipoMsg = JOptionPane.WARNING_MESSAGE;
+            if (e.getCause() != null) {
+                tipoMsg = JOptionPane.ERROR_MESSAGE;
+            }
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
+        }
+        return turma;
+    }
+    
+    private String nomeCurso;
+    private List turma;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton continuarFormGrade;
     private javax.swing.JComboBox<String> cursoComboBox;
@@ -176,4 +261,5 @@ public class FormGrade extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> turmaComboBox;
     private javax.swing.JButton voltarFormGrade;
     // End of variables declaration//GEN-END:variables
+
 }
