@@ -59,4 +59,9 @@ public class ReferenciaBibliograficaBO implements BO<ReferenciaBibliografica> {
     public ReferenciaBibliografica consultar(int id) throws NegocioException {
         return null;
     }
+
+    @Override
+    public List<ReferenciaBibliografica> listarTurma() throws NegocioException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
