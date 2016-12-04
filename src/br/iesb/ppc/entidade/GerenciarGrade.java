@@ -8,6 +8,15 @@ public class GerenciarGrade implements Serializable{
     private String nomeCurso;
     private int modalidadeTipo;
     private String nomeTurma;
+    private int idCurso;
+
+    public int getIdCurso() {
+        return idCurso;
+    }
+
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
+    }
 
     public String getNomeTurma() {
         return nomeTurma;
