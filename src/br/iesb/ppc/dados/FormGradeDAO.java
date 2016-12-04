@@ -35,15 +35,22 @@ public class FormGradeDAO implements DAO<GerenciarGrade>  {
         try {
             Statement stmt = conexao.createStatement();
             
-            GerenciarGrade gerenciarGrade = new GerenciarGrade();
-            int modalidade = gerenciarGrade.getModalidadeTipo(); //codigo precisa de substituir
             
-            String sql = "select * from Curso, Modalidade, Turma where Curso_id = id_Curso and Modalidade_id = id_Modalidade and modalidadeTipo = " + modalidade +"";
-
+            
+            String sql = "select nomeCurso, modalidadeTipo from Curso, Modalidade where Modalidade_id = id_Modalidade";
+            
             ResultSet rs = stmt.executeQuery(sql);
             
+            int i=0;
             while(rs.next()){
-                listar = (List<GerenciarGrade>) rs.getArray("nomeCurso");
+                GerenciarGrade gerenciarGrade = new GerenciarGrade();
+                
+                
+                gerenciarGrade.setNomeCurso(rs.getString(1));
+                gerenciarGrade.setModalidadeTipo(rs.getInt(2));
+                
+                listar.add(i, gerenciarGrade);
+                i++;
             }
             stmt.close();
             conexao.close();
@@ -59,16 +66,18 @@ public class FormGradeDAO implements DAO<GerenciarGrade>  {
         try {
             Statement stmt = conexao.createStatement();
             
-            GerenciarGrade gerenciarGrade = new GerenciarGrade();
-            int modalidade = gerenciarGrade.getModalidadeTipo();
-            String curso = gerenciarGrade.getNomeCurso();
-            
-            String sql = "select * from Curso, Modalidade, Turma where Curso_id = id_Curso and Modalidade_id = id_Modalidade and modalidadeTipo = " + modalidade +" and nomeCurso = "+ curso +"";
+            String sql = "select nomeTurma, modalidadeTipo, nomeCurso from Curso, Modalidade, Turma where Modalidade_id = id_Modalidade and Curso_id = id_Curso";
             
             ResultSet rs = stmt.executeQuery(sql);
             
             while(rs.next()){
-                listarTurma = (List<GerenciarGrade>) rs.getArray("nomeTurma");
+                GerenciarGrade gerenciarGrade = new GerenciarGrade();
+                
+                gerenciarGrade.setNomeTurma(rs.getString(1));
+                gerenciarGrade.setModalidadeTipo(rs.getInt(2));
+                gerenciarGrade.setNomeCurso(rs.getString(3));
+                
+                listarTurma.add(gerenciarGrade);
             }
             stmt.close();
             conexao.close();

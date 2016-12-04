@@ -175,9 +175,7 @@ public class FormGrade extends javax.swing.JDialog {
     }//GEN-LAST:event_radioPresencialActionPerformed
 
     private void cursoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cursoComboBoxActionPerformed
-        nomeCurso = (String) cursoComboBox.getSelectedItem();
         
-        FormGrade(nomeCurso);
     }//GEN-LAST:event_cursoComboBoxActionPerformed
 
     private void turmaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turmaComboBoxActionPerformed
@@ -189,66 +187,83 @@ public class FormGrade extends javax.swing.JDialog {
     private void FormGrade(){
         GerenciarGrade gerenciarGrade = new GerenciarGrade();
         
-        if(radioEAD.isSelected()){
-            gerenciarGrade.setModalidadeTipo(1);
-        }else if(radioPresencial.isSelected()){
-            gerenciarGrade.setModalidadeTipo(2);
-        }
-        cursoComboBox.removeAllItems();
-        turmaComboBox.removeAllItems();
+//        turmaComboBox.removeAllItems();
         
         BO<GerenciarGrade> bo = new FormGradeBO();
         
         try {
             List<GerenciarGrade> lista = bo.listar();
-            
-            DefaultComboBoxModel modelCurso = new DefaultComboBoxModel();
-
-            while(!lista.isEmpty()){
-                modelCurso.addElement(lista);
-            }
-            cursoComboBox.setModel(modelCurso);
-            
-            nomeCurso = (String) cursoComboBox.getSelectedItem();
-            
-            FormGrade(nomeCurso);
+            popularComboBoxCurso(lista);
+//            while(!lista.isEmpty()){
+//                
+//                modelCurso.addElement(lista);
+//            }
+//            cursoComboBox.setModel(modelCurso);
+//            
+//            nomeCurso = (String) cursoComboBox.getSelectedItem();
+//            
+//            FormGrade(nomeCurso);
         } catch (Exception e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
+            
             if (e.getCause() != null) {
                 tipoMsg = JOptionPane.ERROR_MESSAGE;
             }
+            
             JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
         }
     }
 
-    private List FormGrade(String nomeCurso){
-        GerenciarGrade gerenciarGrade = new GerenciarGrade();
+//    private List FormGrade(String nomeCurso){
+//        GerenciarGrade gerenciarGrade = new GerenciarGrade();
+//        
+//        gerenciarGrade.setNomeCurso(nomeCurso);
+//        
+//        BO<GerenciarGrade> bo = new FormGradeBO();
+//        
+//        try {
+//            List<GerenciarGrade> listaTurma = bo.listarTurma();
+//            
+//            DefaultComboBoxModel modelTurma = new DefaultComboBoxModel();
+//            
+//            while(!listaTurma.isEmpty()){
+//                modelTurma.addElement(listaTurma);
+//            }
+//            cursoComboBox.setModel(modelTurma);
+//        } catch (Exception e) {
+//            int tipoMsg = JOptionPane.WARNING_MESSAGE;
+//            
+//            if (e.getCause() != null) {
+//                tipoMsg = JOptionPane.ERROR_MESSAGE;
+//            }
+//            
+//            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
+//        }
+//        return turma;
+//    }
+//    
+    private void popularComboBoxCurso(List<GerenciarGrade> lista){
+        DefaultComboBoxModel modelCurso = new DefaultComboBoxModel();
         
-        gerenciarGrade.setNomeCurso(nomeCurso);
+        cursoComboBox.removeAllItems();
         
-        BO<GerenciarGrade> bo = new FormGradeBO();
         
-        try {
-            List<GerenciarGrade> listaTurma = bo.listarTurma();
-            
-            DefaultComboBoxModel modelTurma = new DefaultComboBoxModel();
-            
-            while(!listaTurma.isEmpty()){
-                modelTurma.addElement(listaTurma);
-            }
-            cursoComboBox.setModel(modelTurma);
-        } catch (Exception e) {
-            int tipoMsg = JOptionPane.WARNING_MESSAGE;
-            if (e.getCause() != null) {
-                tipoMsg = JOptionPane.ERROR_MESSAGE;
-            }
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
+        
+        for(GerenciarGrade gerenciarGrade : lista){
+            String[] linha = {gerenciarGrade.getNomeCurso()};
+            modelCurso.addElement(linha);
         }
-        return turma;
+        cursoComboBox.setModel(modelCurso);
     }
+//    private void popularFormulario(List<Aluno> lista){
+//        DefaultTableModel modelo = (DefaultTableModel)jTableAluno.getModel(); 
+//        modelo.setNumRows(0);
+//        for(Aluno aluno : lista) {
+//            String[] linha = {Integer.toString(aluno.getMatricula()), aluno.getNome()};
+//            modelo.addRow(linha);
+//        }
+//    }
     
-    private String nomeCurso;
-    private List turma;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton continuarFormGrade;
     private javax.swing.JComboBox<String> cursoComboBox;
