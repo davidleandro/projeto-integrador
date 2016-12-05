@@ -13,6 +13,7 @@ public class Ata implements Serializable {
     private String sede;
     private String sala;
     private String descricao;
+    private int id;
 
     public Ata(String data, String horaInicio, String horaFim, String assunto, String sede, String sala, String descricao) {
         this.data = data;
@@ -81,6 +82,14 @@ public class Ata implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

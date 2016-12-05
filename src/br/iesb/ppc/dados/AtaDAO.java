@@ -34,11 +34,21 @@ public class AtaDAO implements DAO<Ata> {
     }
 
     public void alterar(Ata entidade) throws DadosException {
-        // TODO
+
     }
 
     public void excluir(Ata entidade) throws DadosException {
-        // TODO
+        Connection conexao = ConexaoBD.getConexao();
+        try {
+            String sql = "delete from ata where id = ?";
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+
+            pstmt.setInt(1, entidade.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new DadosException(e.getMessage());
+        }
     }
 
     public Ata consultar(int id) throws DadosException {
@@ -51,14 +61,15 @@ public class AtaDAO implements DAO<Ata> {
         Connection conexao = ConexaoBD.getConexao();
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "select data, assunto, sede, descricao from ata";
+            String sql = "select id,data, assunto, sede, descricao from ata";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Ata ata = new Ata();
-                ata.setData(rs.getString(1));
-                ata.setAssunto(rs.getString(2));
-                ata.setSede(rs.getString(3));
-                ata.setDescricao(rs.getString(4));
+                ata.setId(rs.getInt(1));
+                ata.setData(rs.getString(2));
+                ata.setAssunto(rs.getString(3));
+                ata.setSede(rs.getString(4));
+                ata.setDescricao(rs.getString(5));
                 lista.add(ata);
             }
             stmt.close();

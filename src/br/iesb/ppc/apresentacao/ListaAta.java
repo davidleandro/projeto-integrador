@@ -5,11 +5,15 @@
  */
 package br.iesb.ppc.apresentacao;
 
+import br.iesb.ppc.dados.AtaDAO;
+import br.iesb.ppc.dados.DadosException;
 import br.iesb.ppc.entidade.Ata;
 import br.iesb.ppc.negocio.AtaBO;
 import br.iesb.ppc.negocio.BO;
 import br.iesb.ppc.negocio.NegocioException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +38,7 @@ public class ListaAta extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         for (Ata ata : lista) {
-            String[] linha = {ata.getData(), ata.getAssunto(), ata.getSede(), ata.getDescricao()};
+            String[] linha = {String.valueOf(ata.getId()), ata.getData(), ata.getAssunto(), ata.getSede(), ata.getDescricao()};
             modelo.addRow(linha);
         }
     }
@@ -50,6 +54,7 @@ public class ListaAta extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         buttonListar = new javax.swing.JButton();
+        buttonExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,11 +63,11 @@ public class ListaAta extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Data", "Assunto", "Sede", "Descriçoes", "Ações"
+                "Codigo", "Data", "Assunto", "Sede", "Descriçoes", "Ações"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -81,6 +86,13 @@ public class ListaAta extends javax.swing.JDialog {
             }
         });
 
+        buttonExcluir.setText("Excluir");
+        buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,6 +106,8 @@ public class ListaAta extends javax.swing.JDialog {
                         .addContainerGap(561, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonListar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonExcluir)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -104,7 +118,9 @@ public class ListaAta extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonListar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonListar)
+                    .addComponent(buttonExcluir))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -125,8 +141,23 @@ public class ListaAta extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_buttonListarActionPerformed
 
+    private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
+        Ata ata = new Ata();
+        
+        int teste = jTable1.getSelectedRow();
+        int id = Integer.parseInt((String) jTable1.getValueAt(teste, 0));
+        ata.setId(id);
+        AtaDAO ataDao = new AtaDAO();
+        try {
+            ataDao.excluir(ata);
+        } catch (DadosException ex) {
+            Logger.getLogger(ListaAta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buttonExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonListar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

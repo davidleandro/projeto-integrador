@@ -21,7 +21,7 @@ public class FormGradeDAO implements DAO<GerenciarGrade>  {
     }
 
     public void excluir(GerenciarGrade entidade) throws DadosException {
-        // TODO
+        
     }
 
     public GerenciarGrade consultar(int id) throws DadosException {
