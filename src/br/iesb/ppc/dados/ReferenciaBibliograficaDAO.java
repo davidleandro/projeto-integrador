@@ -34,7 +34,7 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
         Connection conexao = ConexaoBD.getConexao();
         
         try {
-            String sql = "UPDATE referencia_bibliografica SET autor = ?', titulo = ?, editora = ?, ano = ?, quantidade = ? WHERE id = ?";
+            String sql = "UPDATE referencia_bibliografica SET autor = ?, titulo = ?, editora = ?, ano = ?, quantidade = ? WHERE id = ?";
             
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             

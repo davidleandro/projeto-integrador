@@ -151,7 +151,17 @@ public class ListaReferenciaBibliografica extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        int id = Integer.parseInt((String) jTable1.getValueAt(row, 0));
+        ReferenciaBibliograficaDAO referencia_bibliografica_dao = new ReferenciaBibliograficaDAO();
+        ReferenciaBibliografica referencia_bibliografica = new ReferenciaBibliografica();
+        
+        try {
+            referencia_bibliografica = referencia_bibliografica_dao.consultar(id);
+            FormAlterarReferenciaBibliografica dialog = new FormAlterarReferenciaBibliografica(new javax.swing.JFrame(), true, referencia_bibliografica);
+        } catch (DadosException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Mensagem", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
