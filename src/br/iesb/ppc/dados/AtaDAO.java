@@ -80,15 +80,8 @@ public class AtaDAO implements DAO<Ata> {
         return lista;
     }
 
+    @Override
     public List<Ata> listarTurma() throws DadosException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<Ata> listar(int id) throws DadosException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public List<Ata> listarTurma(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
