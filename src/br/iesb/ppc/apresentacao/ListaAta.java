@@ -30,6 +30,7 @@ public class ListaAta extends javax.swing.JDialog {
     public ListaAta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        listarTodosRegistros();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
@@ -53,8 +54,8 @@ public class ListaAta extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        buttonListar = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,19 +80,14 @@ public class ListaAta extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Atas");
 
-        buttonListar.setText("Listar");
-        buttonListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonListarActionPerformed(evt);
-            }
-        });
-
         buttonExcluir.setText("Excluir");
         buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirActionPerformed(evt);
             }
         });
+
+        jButton1.setText("Alterar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,8 +101,8 @@ public class ListaAta extends javax.swing.JDialog {
                         .addComponent(jLabel1)
                         .addContainerGap(561, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonListar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonExcluir)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -119,15 +115,30 @@ public class ListaAta extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonListar)
-                    .addComponent(buttonExcluir))
+                    .addComponent(buttonExcluir)
+                    .addComponent(jButton1))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarActionPerformed
+    private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
+        Ata ata = new Ata();
+        
+        int teste = jTable1.getSelectedRow();
+        int id = Integer.parseInt((String) jTable1.getValueAt(teste, 0));
+        ata.setId(id);
+        AtaDAO ataDao = new AtaDAO();
+        try {
+            ataDao.excluir(ata);
+            listarTodosRegistros();
+        } catch (DadosException ex) {
+            Logger.getLogger(ListaAta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buttonExcluirActionPerformed
+    
+    public void listarTodosRegistros() {
         BO<Ata> bo = new AtaBO();
         try {
             List<Ata> lista = bo.listar();
@@ -139,26 +150,11 @@ public class ListaAta extends javax.swing.JDialog {
             }
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Mensagem", tipoMsg);
         }
-    }//GEN-LAST:event_buttonListarActionPerformed
-
-    private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        Ata ata = new Ata();
-        
-        int teste = jTable1.getSelectedRow();
-        int id = Integer.parseInt((String) jTable1.getValueAt(teste, 0));
-        ata.setId(id);
-        AtaDAO ataDao = new AtaDAO();
-        try {
-            ataDao.excluir(ata);
-        } catch (DadosException ex) {
-            Logger.getLogger(ListaAta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_buttonExcluirActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonExcluir;
-    private javax.swing.JButton buttonListar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
