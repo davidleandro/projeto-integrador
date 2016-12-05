@@ -74,12 +74,6 @@ public class FormReferenciaBibliografica extends javax.swing.JDialog {
             }
         });
 
-        txtAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAutorActionPerformed(evt);
-            }
-        });
-
         labelTitulo.setText("Título:*");
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N

@@ -5,12 +5,21 @@ import java.io.Serializable;
 
 public class ReferenciaBibliografica implements Serializable {
     
+    private int id;
     private String autor;
     private String titulo;
     private String editora;
     private String ano;
     private String quantidade;
 
+    public int getID() {
+        return id;
+    }
+    
+    public void setID(int id) {
+        this.id = id;
+    }
+    
     public String getAutor() {
         return autor;
     }

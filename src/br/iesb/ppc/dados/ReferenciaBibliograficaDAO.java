@@ -31,15 +31,65 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
     }
 
     public void alterar(ReferenciaBibliografica entidade) throws DadosException {
-        // TODO
+        Connection conexao = ConexaoBD.getConexao();
+        
+        try {
+            String sql = "UPDATE referencia_bibliografica SET autor = ?', titulo = ?, editora = ?, ano = ?, quantidade = ? WHERE id = ?";
+            
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            
+            pstmt.setString(1, entidade.getAutor());
+            pstmt.setString(2, entidade.getTitulo());
+            pstmt.setString(3, entidade.getEditora());
+            pstmt.setString(4, entidade.getAno());
+            pstmt.setString(5, entidade.getQuantidade());
+            pstmt.setInt(6, entidade.getID());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
     }
 
     public void excluir(ReferenciaBibliografica entidade) throws DadosException {
-        // TODO
+        Connection conexao = ConexaoBD.getConexao();
+        
+        try {
+            String sql = "DELETE FROM referencia_bibliografica WHERE id = ?";
+            
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+            
+            pstmt.setInt(1, entidade.getID());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
     }
 
     public ReferenciaBibliografica consultar(int id) throws DadosException {
-        return null;
+        Connection conexao = ConexaoBD.getConexao();
+        ReferenciaBibliografica referencia_bibliografica = new ReferenciaBibliografica();
+        
+        try {
+            Statement stmt = conexao.createStatement();
+            String sql = "SELECT id, autor, titulo, editora, ano, quantidade FROM referencia_bibliografica WHERE id =" + id;
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while(rs.next()) {
+                referencia_bibliografica.setID(rs.getInt(1));
+                referencia_bibliografica.setAutor(rs.getString(2));
+                referencia_bibliografica.setTitulo(rs.getString(3));
+                referencia_bibliografica.setEditora(rs.getString(4));
+                referencia_bibliografica.setAno(rs.getString(5));
+                referencia_bibliografica.setQuantidade(rs.getString(6));
+            }
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
+        return referencia_bibliografica;
     }
 
     public List<ReferenciaBibliografica> listar() throws DadosException {
@@ -48,15 +98,16 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
         Connection conexao = ConexaoBD.getConexao();
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "select * from referencia_bibliografica";
+            String sql = "SELECT id, autor, titulo, editora, ano, quantidade FROM referencia_bibliografica";
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()) {
                 ReferenciaBibliografica referencia_bibliografica = new ReferenciaBibliografica();
-                referencia_bibliografica.setAutor(rs.getString(1));
-                referencia_bibliografica.setTitulo(rs.getString(2));
-                referencia_bibliografica.setEditora(rs.getString(3));
-                referencia_bibliografica.setAno(rs.getString(4));
-                referencia_bibliografica.setQuantidade(rs.getString(5));
+                referencia_bibliografica.setID(rs.getInt(1));
+                referencia_bibliografica.setAutor(rs.getString(2));
+                referencia_bibliografica.setTitulo(rs.getString(3));
+                referencia_bibliografica.setEditora(rs.getString(4));
+                referencia_bibliografica.setAno(rs.getString(5));
+                referencia_bibliografica.setQuantidade(rs.getString(6));
                 lista.add(referencia_bibliografica);
             }
             stmt.close();

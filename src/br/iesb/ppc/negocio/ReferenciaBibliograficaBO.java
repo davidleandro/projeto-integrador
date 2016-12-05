@@ -44,20 +44,38 @@ public class ReferenciaBibliograficaBO implements BO<ReferenciaBibliografica> {
         try {
             dao.inserir(entidade);
         } catch (DadosException e) {
-            throw new NegocioException("Erro no sistema", e);
+            throw new NegocioException("Erro ao inserir", e);
         }
     }
 
     public void alterar(ReferenciaBibliografica entidade) throws NegocioException {
-        // TODO
+        DAO<ReferenciaBibliografica> dao = new ReferenciaBibliograficaDAO();
+        try {
+            dao.alterar(entidade);
+        } catch (DadosException e) {
+            throw new NegocioException("Erro ao alterar", e);
+        }
     }
 
     public void excluir(ReferenciaBibliografica entidade) throws NegocioException {
-        // TODO
+        DAO<ReferenciaBibliografica> dao = new ReferenciaBibliograficaDAO();
+        try {
+            dao.excluir(entidade);
+        } catch (DadosException e) {
+            throw new NegocioException("Erro ao excluir", e);
+        }
     }
 
     public ReferenciaBibliografica consultar(int id) throws NegocioException {
-        return null;
+        DAO<ReferenciaBibliografica> dao = new ReferenciaBibliograficaDAO();
+        ReferenciaBibliografica referencia_bibliografica;
+        
+        try {
+            referencia_bibliografica = dao.consultar(id);
+        } catch (DadosException e) {
+            throw new NegocioException("Erro na consulta", e);
+        }
+        return referencia_bibliografica;
     }
 
     @Override
