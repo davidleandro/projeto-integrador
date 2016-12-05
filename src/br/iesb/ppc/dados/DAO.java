@@ -8,5 +8,6 @@ public interface DAO<T> {
     void excluir(T entidade) throws DadosException;
     T consultar(int id) throws DadosException;
     List<T> listar() throws DadosException;
-    List<T> listarTurma() throws DadosException;
+    List<T> listarTurma(int id) throws DadosException;
+    List<T> listar(int id) throws DadosException;
 }
