@@ -9,5 +9,6 @@ public interface BO<T> {
     void excluir(T entidade) throws NegocioException;
     T consultar(int id) throws NegocioException;
     List<T> listar() throws NegocioException;
-    List<T> listarTurma() throws NegocioException;
+    List<T> listarTurma(int id) throws NegocioException;
+    List<T> listar(int id) throws NegocioException;
 }
