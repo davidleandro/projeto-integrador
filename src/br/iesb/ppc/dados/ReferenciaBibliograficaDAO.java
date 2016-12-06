@@ -118,10 +118,6 @@ public class ReferenciaBibliograficaDAO implements DAO<ReferenciaBibliografica> 
         return lista;
     }
 
-    public List<ReferenciaBibliografica> listarTurma() throws DadosException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public List<ReferenciaBibliografica> listar(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

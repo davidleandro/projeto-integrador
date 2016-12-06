@@ -51,8 +51,11 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         return lista;
     }
 
-    @Override
-    public List<PlanoDeEnsino> listarTurma() throws DadosException {
+    public List<PlanoDeEnsino> listarTurma(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<PlanoDeEnsino> listar(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
