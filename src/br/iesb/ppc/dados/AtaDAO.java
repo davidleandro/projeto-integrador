@@ -34,7 +34,25 @@ public class AtaDAO implements DAO<Ata> {
     }
 
     public void alterar(Ata entidade) throws DadosException {
+        Connection conexao = ConexaoBD.getConexao();
 
+        try {
+            String sql = "UPDATE ata SET data = ?, horaInicio = ?, horaFim = ?, assunto = ?, sede = ?, sala = ?, descricao = ? WHERE id = ?";
+
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+
+            pstmt.setString(1, entidade.getData());
+            pstmt.setString(2, entidade.getHoraInicio());
+            pstmt.setString(3, entidade.getHoraFim());
+            pstmt.setString(4, entidade.getAssunto());
+            pstmt.setString(5, entidade.getSede());
+            pstmt.setString(6, entidade.getSala());
+            pstmt.setString(7, entidade.getDescricao());
+            pstmt.setInt(8, entidade.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
     }
 
     public void excluir(Ata entidade) throws DadosException {
@@ -52,7 +70,30 @@ public class AtaDAO implements DAO<Ata> {
     }
 
     public Ata consultar(int id) throws DadosException {
-        return null;
+        Connection conexao = ConexaoBD.getConexao();
+        Ata ata = new Ata();
+
+        try {
+            Statement stmt = conexao.createStatement();
+            String sql = "SELECT id, data, horaInicio, horaFim, assunto, sede, sala, descricao FROM ata WHERE id =" + id;
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                ata.setId(rs.getInt(1));
+                ata.setData(rs.getString(2));
+                ata.setHoraInicio(rs.getString(3));
+                ata.setHoraFim(rs.getString(4));
+                ata.setAssunto(rs.getString(5));
+                ata.setSede(rs.getString(6));
+                ata.setSala(rs.getString(7));
+                ata.setDescricao(rs.getString(8));
+            }
+            stmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
+        return ata;
     }
 
     public List<Ata> listar() throws DadosException {

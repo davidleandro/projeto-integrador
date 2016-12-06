@@ -55,15 +55,35 @@ public class AtaBO implements BO<Ata> {
     }
 
     public void alterar(Ata entidade) throws NegocioException {
-        // TODO
+        DAO<Ata> dao = new AtaDAO();
+        try {
+            dao.alterar(entidade);
+        } catch (DadosException e) {
+            System.out.println(e.getMessage());
+            throw new NegocioException("Erro ao alterar", e);
+        }
     }
 
     public void excluir(Ata entidade) throws NegocioException {
-        // TODO
+        DAO<Ata> dao = new AtaDAO();
+        try {
+            dao.excluir(entidade);
+        } catch (DadosException e) {
+            System.out.println(e.getMessage());
+            throw new NegocioException("Erro ao excluir", e);
+        }
     }
 
     public Ata consultar(int id) throws NegocioException {
-        return null;
+        DAO<Ata> dao = new AtaDAO();
+        Ata ata;
+        try {
+            ata = dao.consultar(id);
+        } catch (DadosException e) {
+            System.out.println(e.getMessage());
+            throw new NegocioException("Erro ao consultar", e);
+        }
+        return ata;
     }
 
     public List<Ata> listarTurma() throws NegocioException {

@@ -88,6 +88,11 @@ public class ListaAta extends javax.swing.JDialog {
         });
 
         jButton1.setText("Alterar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +130,7 @@ public class ListaAta extends javax.swing.JDialog {
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
         Ata ata = new Ata();
-        
+
         int teste = jTable1.getSelectedRow();
         int id = Integer.parseInt((String) jTable1.getValueAt(teste, 0));
         ata.setId(id);
@@ -134,10 +139,25 @@ public class ListaAta extends javax.swing.JDialog {
             ataDao.excluir(ata);
             listarTodosRegistros();
         } catch (DadosException ex) {
-            Logger.getLogger(ListaAta.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Mensagem", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_buttonExcluirActionPerformed
-    
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int row = jTable1.getSelectedRow();
+        int id = Integer.parseInt((String) jTable1.getValueAt(row, 0));
+        AtaDAO ata_dao = new AtaDAO();
+        Ata ata = new Ata();
+
+        try {
+            ata = ata_dao.consultar(id);
+            FormAlterarAtas dialog = new FormAlterarAtas(new javax.swing.JFrame(), true, ata);
+        } catch (DadosException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Mensagem", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void listarTodosRegistros() {
         BO<Ata> bo = new AtaBO();
         try {
@@ -148,6 +168,8 @@ public class ListaAta extends javax.swing.JDialog {
             if (ex.getCause() != null) {
                 tipoMsg = JOptionPane.ERROR_MESSAGE;
             }
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.setNumRows(0);
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Mensagem", tipoMsg);
         }
     }
