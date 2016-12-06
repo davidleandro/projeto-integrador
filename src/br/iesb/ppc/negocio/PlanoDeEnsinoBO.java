@@ -61,8 +61,11 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino> {
         return null;
     }
 
-    @Override
-    public List<PlanoDeEnsino> listarTurma() throws NegocioException {
+    public List<PlanoDeEnsino> listarTurma(int id) throws NegocioException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<PlanoDeEnsino> listar(int id) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

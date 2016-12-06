@@ -86,10 +86,6 @@ public class AtaBO implements BO<Ata> {
         return ata;
     }
 
-    public List<Ata> listarTurma() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public List<Ata> listar(int id) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
