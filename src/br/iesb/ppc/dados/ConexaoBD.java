@@ -12,7 +12,7 @@ public final class ConexaoBD {
         
         Properties properties = new Properties();
         properties.setProperty("user", "root");
-        properties.setProperty("password", "elementaryos");
+        properties.setProperty("password", "123");
         properties.setProperty("useSSL", "false");
         properties.setProperty("autoReconnect", "true");
         

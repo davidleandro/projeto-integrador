@@ -1,7 +1,6 @@
 package br.iesb.ppc.dados;
 
 import br.iesb.ppc.entidade.GerenciarGrade;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -29,61 +28,64 @@ public class FormGradeDAO implements DAO<GerenciarGrade>  {
     }
 
     public List<GerenciarGrade> listar() throws DadosException {
-        List<GerenciarGrade> listar = new ArrayList<GerenciarGrade>();
-        Connection conexao = ConexaoBD.getConexao();
-        
-        try {
-            Statement stmt = conexao.createStatement();
-            
-            
-            
-            String sql = "select nomeCurso, modalidadeTipo from Curso, Modalidade where Modalidade_id = id_Modalidade";
-            
-            ResultSet rs = stmt.executeQuery(sql);
-            
-            int i=0;
-            while(rs.next()){
-                GerenciarGrade gerenciarGrade = new GerenciarGrade();
-                
-                
-                gerenciarGrade.setNomeCurso(rs.getString(1));
-                gerenciarGrade.setModalidadeTipo(rs.getInt(2));
-                
-                listar.add(i, gerenciarGrade);
-                i++;
-            }
-            stmt.close();
-            conexao.close();
-        } catch (SQLException e) {
-            throw new DadosException(e.getMessage());
-        }
-        return listar;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public List<GerenciarGrade> listarTurma() throws DadosException {
+    public List<GerenciarGrade> listarTurma(int id) throws DadosException {
         List<GerenciarGrade> listarTurma = new ArrayList<GerenciarGrade>();
         Connection conexao = ConexaoBD.getConexao();
         
         try {
-            Statement stmt = conexao.createStatement();
+            String sql = "select nomeTurma, id_Turma from Curso, Turma where id_Curso = ? and id_Curso = Curso_id";
             
-            String sql = "select nomeTurma, modalidadeTipo, nomeCurso from Curso, Modalidade, Turma where Modalidade_id = id_Modalidade and Curso_id = id_Curso";
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
             
-            ResultSet rs = stmt.executeQuery(sql);
+            pstmt.setInt(1, id);
+            
+            ResultSet rs = pstmt.executeQuery();
             
             while(rs.next()){
                 GerenciarGrade gerenciarGrade = new GerenciarGrade();
                 
                 gerenciarGrade.setNomeTurma(rs.getString(1));
-                gerenciarGrade.setModalidadeTipo(rs.getInt(2));
-                gerenciarGrade.setNomeCurso(rs.getString(3));
+                gerenciarGrade.setIdTurma(rs.getInt(2));
                 
                 listarTurma.add(gerenciarGrade);
             }
-            stmt.close();
+            pstmt.close();
             conexao.close();
         } catch (SQLException e) {
             throw new DadosException(e.getMessage());
         }
         return listarTurma;
+    }
+
+    public List<GerenciarGrade> listar(int id) throws DadosException {
+        List<GerenciarGrade> listar = new ArrayList<GerenciarGrade>();
+        Connection conexao = ConexaoBD.getConexao();
+        
+        try {
+            String sql = "select nomeCurso, modalidadeTipo, id_Curso from Curso, Modalidade where Modalidade_id = id_Modalidade and modalidadeTipo = ? ";
+            
+            PreparedStatement pstmt = conexao.prepareStatement(sql);
+
+            pstmt.setInt(1, id);
+
+            ResultSet rs = pstmt.executeQuery();
+            
+            while(rs.next()){
+                GerenciarGrade gerenciarGrade = new GerenciarGrade();
+                
+                gerenciarGrade.setNomeCurso(rs.getString(1));
+                gerenciarGrade.setModalidadeTipo(rs.getInt(2));
+                gerenciarGrade.setIdCurso(rs.getInt(3));
+
+                listar.add(gerenciarGrade);
+            }
+            pstmt.close();
+            conexao.close();
+        } catch (SQLException e) {
+            throw new DadosException(e.getMessage());
+        }
+        return listar;
     }
 }

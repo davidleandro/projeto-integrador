@@ -1,6 +1,8 @@
 package br.iesb.ppc.entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GerenciarGrade implements Serializable{
     private String nomeDisciplina;
@@ -8,7 +10,16 @@ public class GerenciarGrade implements Serializable{
     private String nomeCurso;
     private int modalidadeTipo;
     private String nomeTurma;
+    private int idTurma;
     private int idCurso;
+
+    public int getIdTurma() {
+        return idTurma;
+    }
+
+    public void setIdTurma(int idTurma) {
+        this.idTurma = idTurma;
+    }
 
     public int getIdCurso() {
         return idCurso;
@@ -57,4 +68,5 @@ public class GerenciarGrade implements Serializable{
     public void setModalidadeTipo(int modalidadeTipo) {
         this.modalidadeTipo = modalidadeTipo;
     }
+
 }
