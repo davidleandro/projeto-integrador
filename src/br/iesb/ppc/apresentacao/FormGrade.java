@@ -7,7 +7,7 @@ package br.iesb.ppc.apresentacao;
 
 import br.iesb.ppc.entidade.GerenciarGrade;
 import br.iesb.ppc.negocio.BO;
-import br.iesb.ppc.negocio.FormGradeBO;
+import br.iesb.ppc.negocio.GradeBO;
 import br.iesb.ppc.negocio.NegocioException;
 import java.util.List;
 import java.util.logging.Level;
@@ -165,24 +165,22 @@ public class FormGrade extends javax.swing.JDialog {
     }//GEN-LAST:event_voltarFormGradeActionPerformed
 
     private void continuarFormGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarFormGradeActionPerformed
-//        FormGerenciarGrade formGrade = new FormGerenciarGrade(new javax.swing.JFrame(), true);
-//        
-//        BO<GerenciarGrade> bo = new FormGradeBO();
-//        
-//        try {
-//            GerenciarGrade gerenciarGrade = criarEntidade();
-//            
-//            bo.validar(gerenciarGrade);
-//        } catch (NegocioException e) {
-//            int tipoMsg = JOptionPane.WARNING_MESSAGE;
-//            if (e.getCause() != null) {
-//                tipoMsg = JOptionPane.ERROR_MESSAGE;
-//            }
-//            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
-//        }
-//        
-//        this.dispose();
+        BO<GerenciarGrade> bo = new GradeBO();
         
+        try {
+            GerenciarGrade gerenciarGrade = criarEntidade();
+            
+            bo.validar(gerenciarGrade);
+            
+            FormGerenciarGrade formGrade = new FormGerenciarGrade(new javax.swing.JFrame(), true);
+            this.dispose();
+        } catch (NegocioException e) {
+            int tipoMsg = JOptionPane.WARNING_MESSAGE;
+            if (e.getCause() != null) {
+                tipoMsg = JOptionPane.ERROR_MESSAGE;
+            }
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
+        }
     }//GEN-LAST:event_continuarFormGradeActionPerformed
 
     private void radioEADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEADActionPerformed
@@ -196,20 +194,20 @@ public class FormGrade extends javax.swing.JDialog {
     }//GEN-LAST:event_radioPresencialActionPerformed
 
     private void cursoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cursoComboBoxActionPerformed
-        int modalidade = getI();
+        int modalidade = getId();
         
         if(radioEAD.isSelected()){
             modalidade = 1;
         }else if(radioPresencial.isSelected()){
             modalidade = 2;
         }
-        if(getI() == modalidade){
-            BO<GerenciarGrade> bo = new FormGradeBO();
+        if(getId() == modalidade){
+            BO<GerenciarGrade> bo = new GradeBO();
         
             try {
                 List lista = getLista();
 
-                int id = turmaComboBox(lista);
+                int id = idCursoComboBox(lista);
 
                 List<GerenciarGrade> listaTurma = bo.listarTurma(id);
                 popularComboBoxTurma(listaTurma);
@@ -230,7 +228,7 @@ public class FormGrade extends javax.swing.JDialog {
     }//GEN-LAST:event_turmaComboBoxActionPerformed
 
     private void FormGrade(){
-        BO<GerenciarGrade> bo = new FormGradeBO();
+        BO<GerenciarGrade> bo = new GradeBO();
         
         int modalidade = 0;
         if(radioEAD.isSelected()){
@@ -245,12 +243,12 @@ public class FormGrade extends javax.swing.JDialog {
             
             setLista(lista);
             
-            int id = turmaComboBox(lista);
+            int id = idCursoComboBox(lista);
             
             List<GerenciarGrade> listaTurma = bo.listarTurma(id);
             popularComboBoxTurma(listaTurma);
             
-            setI(modalidade);
+            setId(modalidade);
         } catch (Exception e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
             
@@ -275,7 +273,7 @@ public class FormGrade extends javax.swing.JDialog {
         cursoComboBox.setModel(modelCurso);
     }
     
-    private int turmaComboBox(List<GerenciarGrade> lista){
+    private int idCursoComboBox(List<GerenciarGrade> lista){
         int id = 0;
         for(GerenciarGrade gerenciarGrade : lista){
             String linha = gerenciarGrade.getNomeCurso();
@@ -294,22 +292,44 @@ public class FormGrade extends javax.swing.JDialog {
         
         for(GerenciarGrade gerenciarGrade : listaTurma){
                 String linha = gerenciarGrade.getNomeTurma();
+                setIdTurma(gerenciarGrade.getIdTurma());
                 modelTurma.addElement(linha);
         }
         turmaComboBox.setModel(modelTurma);
     }
+
+    private GerenciarGrade criarEntidade() {
+        List lista = getLista();
+        int id = idCursoComboBox(lista);
+        
+        GerenciarGrade gerenciarGrade = new GerenciarGrade();
+        gerenciarGrade.setModalidadeTipo(getId());
+        gerenciarGrade.setIdCurso(id);
+        gerenciarGrade.setIdTurma(getIdTurma());
+        
+        return gerenciarGrade;
+    }
     
     private List lista;
-    private int i;
+    private int id;
+    private int idTurma;
 
-    public int getI() {
-        return i;
+    private int getId() {
+        return id;
     }
 
-    public void setI(int i) {
-        this.i = i;
+    private void setId(int id) {
+        this.id = id;
     }
 
+    private int getIdTurma(){
+        return idTurma;
+    }
+    
+    private void setIdTurma(int idTurma){
+        this.idTurma = idTurma;
+    }
+    
     private List getLista() {
         return lista;
     }

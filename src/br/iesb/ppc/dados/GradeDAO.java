@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.ArrayList;
 
-public class FormGradeDAO implements DAO<GerenciarGrade>  {
+public class GradeDAO implements DAO<GerenciarGrade>  {
 
     public void inserir(GerenciarGrade entidade) throws DadosException {
         // TODO

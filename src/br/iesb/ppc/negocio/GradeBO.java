@@ -3,20 +3,20 @@ package br.iesb.ppc.negocio;
 import java.util.List;
 import br.iesb.ppc.dados.DAO;
 import br.iesb.ppc.dados.DadosException;
-import br.iesb.ppc.dados.FormGradeDAO;
+import br.iesb.ppc.dados.GradeDAO;
 import br.iesb.ppc.entidade.GerenciarGrade;
 
-public class FormGradeBO implements BO<GerenciarGrade> {
+public class GradeBO implements BO<GerenciarGrade> {
     
     public void validar(GerenciarGrade entidade) throws NegocioException {
         if(entidade.getModalidadeTipo() == 0){
             throw new NegocioException("Modalidade não marcada!");
         }
-        if(entidade.getNomeCurso().isEmpty()){
-            throw new NegocioException("Não existe Curso cadastrada!");
+        if(entidade.getIdCurso() == 0){
+            throw new NegocioException("Nenhum Curso selecionado!");
         }
-        if (entidade.getNomeTurma().isEmpty()){
-            throw new NegocioException("Não existe Turma cadastrada!");
+        if (entidade.getIdTurma() == 0){
+            throw new NegocioException("Nenhuma Turma selecionada!");
         }
     }
 
@@ -26,7 +26,7 @@ public class FormGradeBO implements BO<GerenciarGrade> {
     
     public List<GerenciarGrade> listarTurma(int id) throws NegocioException {
         List<GerenciarGrade> lista;
-        DAO<GerenciarGrade> dao = new FormGradeDAO();
+        DAO<GerenciarGrade> dao = new GradeDAO();
         
         try {
             lista = dao.listarTurma(id);
@@ -57,7 +57,7 @@ public class FormGradeBO implements BO<GerenciarGrade> {
 
     public List<GerenciarGrade> listar(int id) throws NegocioException {
         List<GerenciarGrade> lista;
-        DAO<GerenciarGrade> dao = new FormGradeDAO();
+        DAO<GerenciarGrade> dao = new GradeDAO();
         try {
             lista = dao.listar(id);
         } catch (DadosException e) {
