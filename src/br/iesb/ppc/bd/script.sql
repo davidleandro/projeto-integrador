@@ -55,7 +55,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`professor` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`professor` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `nome` VARCHAR(45) NULL,
   `cpf` INT NULL,
   `maior_titulacao` VARCHAR(45) NULL,
