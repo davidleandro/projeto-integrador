@@ -41,6 +41,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuReferenciaBibliografica = new javax.swing.JMenu();
         menuItemListarReferenciaBibliografica = new javax.swing.JMenuItem();
         menuItemCadastrarReferenciaBibliografica = new javax.swing.JMenuItem();
+        menuAta1 = new javax.swing.JMenu();
+        menuItemListarAta1 = new javax.swing.JMenuItem();
+        menuItemCadastrarAta1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +147,26 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         BarraMenu.add(menuReferenciaBibliografica);
 
+        menuAta1.setText("Professor");
+
+        menuItemListarAta1.setText("Listar");
+        menuItemListarAta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemListarAta1ActionPerformed(evt);
+            }
+        });
+        menuAta1.add(menuItemListarAta1);
+
+        menuItemCadastrarAta1.setText("Cadastrar");
+        menuItemCadastrarAta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastrarAta1ActionPerformed(evt);
+            }
+        });
+        menuAta1.add(menuItemCadastrarAta1);
+
+        BarraMenu.add(menuAta1);
+
         setJMenuBar(BarraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,6 +223,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         FormExcluirGrade dialog = new FormExcluirGrade(new javax.swing.JFrame(), true);
     }//GEN-LAST:event_menuItemExcluirGradeActionPerformed
 
+    private void menuItemListarAta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarAta1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemListarAta1ActionPerformed
+
+    private void menuItemCadastrarAta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarAta1ActionPerformed
+         FormProfessor dialog = new FormProfessor(new javax.swing.JFrame(), true);
+    }//GEN-LAST:event_menuItemCadastrarAta1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,13 +273,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu menuAta;
+    private javax.swing.JMenu menuAta1;
     private javax.swing.JMenu menuGrade;
     private javax.swing.JMenuItem menuItemCadastrarAta;
+    private javax.swing.JMenuItem menuItemCadastrarAta1;
     private javax.swing.JMenuItem menuItemCadastrarPlanoDeEnsino;
     private javax.swing.JMenuItem menuItemCadastrarReferenciaBibliografica;
     private javax.swing.JMenuItem menuItemCriarGrade;
     private javax.swing.JMenuItem menuItemExcluirGrade;
     private javax.swing.JMenuItem menuItemListarAta;
+    private javax.swing.JMenuItem menuItemListarAta1;
     private javax.swing.JMenuItem menuItemListarGrade;
     private javax.swing.JMenuItem menuItemListarPlanoDeEnsino;
     private javax.swing.JMenuItem menuItemListarReferenciaBibliografica;
