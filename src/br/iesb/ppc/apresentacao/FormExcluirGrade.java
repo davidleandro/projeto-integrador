@@ -20,18 +20,18 @@ import javax.swing.JOptionPane;
  *
  * @author tom
  */
-public class FormGrade extends javax.swing.JDialog {
+public class FormExcluirGrade extends javax.swing.JDialog {
 
     /**
      * Creates new form FormGrade
      */
-    public FormGrade(java.awt.Frame parent, boolean modal) {
+    public FormExcluirGrade(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,8 +49,13 @@ public class FormGrade extends javax.swing.JDialog {
         cursoComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         turmaComboBox = new javax.swing.JComboBox<>();
-        voltarFormGrade = new javax.swing.JButton();
-        continuarFormGrade = new javax.swing.JButton();
+        cancelarGrade = new javax.swing.JButton();
+        excluirGrade = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        semestreComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listGrade = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -89,19 +94,26 @@ public class FormGrade extends javax.swing.JDialog {
             }
         });
 
-        voltarFormGrade.setText("Voltar");
-        voltarFormGrade.addActionListener(new java.awt.event.ActionListener() {
+        cancelarGrade.setText("Cancelar");
+        cancelarGrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltarFormGradeActionPerformed(evt);
+                cancelarGradeActionPerformed(evt);
             }
         });
 
-        continuarFormGrade.setText("Continuar");
-        continuarFormGrade.addActionListener(new java.awt.event.ActionListener() {
+        excluirGrade.setText("Excluir");
+        excluirGrade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarFormGradeActionPerformed(evt);
+                excluirGradeActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Semestre:");
+
+        jLabel4.setText("Grade:");
+
+        listGrade.setEnabled(false);
+        jScrollPane1.setViewportView(listGrade);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,12 +122,18 @@ public class FormGrade extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cursoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(excluirGrade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelarGrade))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cursoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(modalidadeLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -125,13 +143,13 @@ public class FormGrade extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(turmaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 135, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(continuarFormGrade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(voltarFormGrade)))
+                                .addComponent(turmaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(semestreComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -150,21 +168,29 @@ public class FormGrade extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(turmaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(semestreComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(voltarFormGrade)
-                    .addComponent(continuarFormGrade))
+                    .addComponent(cancelarGrade)
+                    .addComponent(excluirGrade))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void voltarFormGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarFormGradeActionPerformed
+    private void cancelarGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarGradeActionPerformed
         this.dispose();
-    }//GEN-LAST:event_voltarFormGradeActionPerformed
+    }//GEN-LAST:event_cancelarGradeActionPerformed
 
-    private void continuarFormGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarFormGradeActionPerformed
+    private void excluirGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirGradeActionPerformed
         BO<GerenciarGrade> bo = new GradeBO();
         
         try {
@@ -172,7 +198,6 @@ public class FormGrade extends javax.swing.JDialog {
             
             bo.validar(gerenciarGrade);
             
-            ListaGerenciarGrade formGrade = new ListaGerenciarGrade(new javax.swing.JFrame(), true);
             this.dispose();
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
@@ -181,15 +206,13 @@ public class FormGrade extends javax.swing.JDialog {
             }
             JOptionPane.showMessageDialog(this, e.getMessage(), "Mensagem", tipoMsg);
         }
-    }//GEN-LAST:event_continuarFormGradeActionPerformed
+    }//GEN-LAST:event_excluirGradeActionPerformed
 
     private void radioEADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEADActionPerformed
-        setLista(null);
         FormGrade();
     }//GEN-LAST:event_radioEADActionPerformed
 
     private void radioPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPresencialActionPerformed
-        setLista(null);
         FormGrade();
     }//GEN-LAST:event_radioPresencialActionPerformed
 
@@ -226,9 +249,10 @@ public class FormGrade extends javax.swing.JDialog {
     private void turmaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turmaComboBoxActionPerformed
 
     }//GEN-LAST:event_turmaComboBoxActionPerformed
-
+    
     private void FormGrade(){
         BO<GerenciarGrade> bo = new GradeBO();
+        GerenciarGrade gerenciar = new GerenciarGrade();
         
         int modalidade = 0;
         if(radioEAD.isSelected()){
@@ -246,9 +270,16 @@ public class FormGrade extends javax.swing.JDialog {
             int id = idCursoComboBox(lista);
             
             List<GerenciarGrade> listaTurma = bo.listarTurma(id);
-            popularComboBoxTurma(listaTurma);
+            int idTurma = popularComboBoxTurma(listaTurma);
             
             setId(modalidade);
+            
+            List<GerenciarGrade> listaSemestre = (List<GerenciarGrade>) bo.listarSemestre(idTurma);
+            
+            popularComboBoxSemestre(listaSemestre);
+            
+            int idGrade = idSemestreComboBox(listaSemestre);
+            
         } catch (Exception e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
             
@@ -285,26 +316,71 @@ public class FormGrade extends javax.swing.JDialog {
         return id;
     }
     
-    private void popularComboBoxTurma(List<GerenciarGrade> listaTurma){
+    private int popularComboBoxTurma(List<GerenciarGrade> listaTurma){
         DefaultComboBoxModel modelTurma = new DefaultComboBoxModel();
+        int id = 0;
         
         turmaComboBox.removeAllItems();
         
         for(GerenciarGrade gerenciarGrade : listaTurma){
                 String linha = gerenciarGrade.getNomeTurma();
-                setIdTurma(gerenciarGrade.getIdTurma());
+                id = gerenciarGrade.getIdTurma();
                 modelTurma.addElement(linha);
         }
         turmaComboBox.setModel(modelTurma);
+        return id;
+    }
+    
+    private void popularComboBoxSemestre(List<GerenciarGrade> listaSemestre) {
+        DefaultComboBoxModel modelSemestre = new DefaultComboBoxModel();
+        
+        semestreComboBox.removeAllItems();
+        
+        for(GerenciarGrade gerenciarGrade : listaSemestre){
+//                String linha = String.valueOf(gerenciarGrade.getQuantidadeSemestre());
+                int linha = gerenciarGrade.getQuantidadeSemestre();
+                modelSemestre.addElement(linha);
+        }
+        semestreComboBox.setModel(modelSemestre);
     }
 
+    
+    private int idSemestreComboBox(List<GerenciarGrade> lista){
+        int id = 0;
+        for(GerenciarGrade gerenciarGrade : lista){
+            String linha = String.valueOf(gerenciarGrade.getQuantidadeSemestre());
+            if(semestreComboBox.getSelectedItem() == linha){
+                id = gerenciarGrade.getIdGrade();
+                break;
+            }
+        }
+        return id;
+    }
+    
+    private void popularListGrade(List<GerenciarGrade> listaGrade){
+        
+    }
+    
+    private int idListGrade(List<GerenciarGrade> listaGrade){
+//        int id = 0;
+//        
+//        for(GerenciarGrade gerenciarGrade : listaGrade){
+//            String linha = gerenciarGrade.getNomeDisciplina();
+//            if(listGrade.getSelectedValuesList() == linha){
+//                id = gerenciarGrade.getIdGrade();
+//                break;
+//            }
+//        }
+        return id;
+    }
+    
     private GerenciarGrade criarEntidade() {
-        List lista = getLista();
-        int id = idCursoComboBox(lista);
+        List listaCurso = getLista();
+        int idCurso = idCursoComboBox(listaCurso);
         
         GerenciarGrade gerenciarGrade = new GerenciarGrade();
         gerenciarGrade.setModalidadeTipo(getId());
-        gerenciarGrade.setIdCurso(id);
+        gerenciarGrade.setIdCurso(idCurso);
         gerenciarGrade.setIdTurma(getIdTurma());
         
         return gerenciarGrade;
@@ -313,6 +389,7 @@ public class FormGrade extends javax.swing.JDialog {
     private List lista;
     private int id;
     private int idTurma;
+    private int modifica;
 
     private int getId() {
         return id;
@@ -338,16 +415,21 @@ public class FormGrade extends javax.swing.JDialog {
         this.lista = lista;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton continuarFormGrade;
+    private javax.swing.JButton cancelarGrade;
     private javax.swing.JComboBox<String> cursoComboBox;
+    private javax.swing.JButton excluirGrade;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listGrade;
     private javax.swing.JLabel modalidadeLabel;
     private javax.swing.ButtonGroup modalidadeRadioButton;
     private javax.swing.JRadioButton radioEAD;
     private javax.swing.JRadioButton radioPresencial;
+    private javax.swing.JComboBox<String> semestreComboBox;
     private javax.swing.JComboBox<String> turmaComboBox;
-    private javax.swing.JButton voltarFormGrade;
     // End of variables declaration//GEN-END:variables
 
 }

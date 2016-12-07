@@ -12,6 +12,24 @@ public class GerenciarGrade implements Serializable{
     private String nomeTurma;
     private int idTurma;
     private int idCurso;
+    private int idGrade;
+    private int idDisciplina;
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+
+    public int getIdGrade() {
+        return idGrade;
+    }
+
+    public void setIdGrade(int idGrade) {
+        this.idGrade = idGrade;
+    }
 
     public int getIdTurma() {
         return idTurma;

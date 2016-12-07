@@ -116,4 +116,14 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino> {
     public List<PlanoDeEnsino> listar(int id) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<PlanoDeEnsino> listarSemestre(int id) throws NegocioException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<PlanoDeEnsino> listarGrade(int id) throws NegocioException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

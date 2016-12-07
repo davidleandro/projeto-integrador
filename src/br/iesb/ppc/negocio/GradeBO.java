@@ -18,6 +18,12 @@ public class GradeBO implements BO<GerenciarGrade> {
         if (entidade.getIdTurma() == 0){
             throw new NegocioException("Nenhuma Turma selecionada!");
         }
+        if(entidade.getQuantidadeSemestre() == 0){
+            throw new NegocioException("Nenhuma Semestre selecionada!");
+        }
+        if(entidade.getIdGrade() == 0){
+            throw new NegocioException("Nenhuma Turma selecionada!");
+        }
     }
 
     public List<GerenciarGrade> listar() throws NegocioException {
@@ -67,5 +73,33 @@ public class GradeBO implements BO<GerenciarGrade> {
             throw new NegocioException("Nenhum Curso encontrada!");
         }
         return lista;
+    }
+
+    public List<GerenciarGrade> listarSemestre(int id) throws NegocioException {
+        List<GerenciarGrade> listaSemestre;
+        DAO<GerenciarGrade> dao = new GradeDAO();
+        try {
+            listaSemestre = dao.listarSemestre(id);
+        } catch (DadosException e) {
+            throw new NegocioException("Erro no sistema!", e);
+        }
+        if (listaSemestre.isEmpty()) {
+            throw new NegocioException("Nenhum Semestre encontrado!");
+        }
+        return listaSemestre;
+    }
+
+    public List<GerenciarGrade> listarGrade(int id) throws NegocioException {
+        List<GerenciarGrade> listaGrade;
+        DAO<GerenciarGrade> dao = new GradeDAO();
+        try {
+            listaGrade = dao.listarGrade(id);
+        } catch (DadosException e) {
+            throw new NegocioException("Erro no sistema!", e);
+        }
+        if (listaGrade.isEmpty()) {
+            throw new NegocioException("Nenhum Grade encontrada!");
+        }
+        return listaGrade;
     }
 }
