@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  *
  * @author david
  */
-public class FormProfessor extends javax.swing.JDialog {
+public class FormAlterarProfessor extends javax.swing.JDialog {
 
     /**
      * Creates new form FormReferenciaBibliografica
      */
-    public FormProfessor(java.awt.Frame parent, boolean modal) {
+    public FormAlterarProfessor(java.awt.Frame parent, boolean modal, Professor professor) {
         super(parent, modal);
         initComponents();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

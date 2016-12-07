@@ -224,7 +224,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemExcluirGradeActionPerformed
 
     private void menuItemListarAta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarAta1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_menuItemListarAta1ActionPerformed
 
     private void menuItemCadastrarAta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarAta1ActionPerformed
