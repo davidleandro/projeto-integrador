@@ -57,7 +57,7 @@ public class ProfessorDAO implements DAO<Professor> {
     public void excluir(Professor entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         try {
-            String sql = "delete from ata where id = ?";
+            String sql = "delete from professor where id = ?";
             PreparedStatement pstmt = conexao.prepareStatement(sql);
 
             pstmt.setInt(1, entidade.getId());
