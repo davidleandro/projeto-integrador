@@ -5,20 +5,17 @@ import java.io.Serializable;
 
 public class PlanoDeEnsino implements Serializable {
     
-    private String professor;
     private String curso;
     private String disciplina;
-    private String cargaHoraria;
     private int ano;
     private int semestre;
-
-    public String getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(String professor) {
-        this.professor = professor;
-    }
+    private String cargaHoraria;
+    private String professor;
+    private String ementa;    
+    private String competencias;
+    private String metodologia;    
+    private String cronograma;
+    private String avaliacao;
 
     public String getCurso() {
         return curso;
@@ -36,14 +33,6 @@ public class PlanoDeEnsino implements Serializable {
         this.disciplina = disciplina;
     }
 
-    public String getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public void setCargaHoraria(String cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
-    }
-
     public int getAno() {
         return ano;
     }
@@ -58,6 +47,63 @@ public class PlanoDeEnsino implements Serializable {
 
     public void setSemestre(int semestre) {
         this.semestre = semestre;
-    }  
+    }
+
+    public String getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(String cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
+
+    public String getEmenta() {
+        return ementa;
+    }
+
+    public void setEmenta(String ementa) {
+        this.ementa = ementa;
+    }
+
+    public String getCompetencias() {
+        return competencias;
+    }
+
+    public void setCompetencias(String competencias) {
+        this.competencias = competencias;
+    }
+
+    public String getMetodologia() {
+        return metodologia;
+    }
+
+    public void setMetodologia(String metodologia) {
+        this.metodologia = metodologia;
+    }
+
+    public String getCronograma() {
+        return cronograma;
+    }
+
+    public void setCronograma(String cronograma) {
+        this.cronograma = cronograma;
+    }
+
+    public String getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(String avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
 
 }
