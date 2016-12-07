@@ -171,7 +171,7 @@ public class ListaPlanoDeEnsino extends javax.swing.JDialog {
         
         try {
             plano_ensino = plano_ensino_dao.consultar(id);
-            //FormAlterarReferenciaBibliografica dialog = new FormAlterarReferenciaBibliografica(new javax.swing.JFrame(), true, plano_ensino);
+            FormAlterarPlanoDeEnsino dialog = new FormAlterarPlanoDeEnsino(new javax.swing.JFrame(), true, plano_ensino);
         } catch (DadosException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Mensagem", JOptionPane.ERROR_MESSAGE);
         }

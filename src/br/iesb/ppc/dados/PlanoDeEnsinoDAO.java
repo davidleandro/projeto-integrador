@@ -44,7 +44,7 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         try {
             String sql = "UPDATE plano_ensino SET curso = ?, disciplina = ?, ano = ?, semestre = ?, "
                     + "carga_horaria_semanal = ?, professor = ?, ementa = ?, competencias = ?, "
-                    + "metodologia = ?, cronograma = ?, avaliacao = ?,  WHERE id = ?";
+                    + "metodologia = ?, cronograma = ?, avaliacao = ? WHERE id = ?";
             
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             
@@ -53,12 +53,13 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
             pstmt.setInt(3, entidade.getAno());
             pstmt.setInt(4, entidade.getSemestre());
             pstmt.setString(5, entidade.getCargaHoraria());
-            pstmt.setString(5, entidade.getProfessor());
-            pstmt.setString(5, entidade.getEmenta());
-            pstmt.setString(5, entidade.getCompetencias());
-            pstmt.setString(5, entidade.getMetodologia());
-            pstmt.setString(5, entidade.getCronograma());
-            pstmt.setString(5, entidade.getAvaliacao()); 
+            pstmt.setString(6, entidade.getProfessor());
+            pstmt.setString(7, entidade.getEmenta());
+            pstmt.setString(8, entidade.getCompetencias());
+            pstmt.setString(9, entidade.getMetodologia());
+            pstmt.setString(10, entidade.getCronograma());
+            pstmt.setString(11, entidade.getAvaliacao()); 
+            pstmt.setInt(12, entidade.getID()); 
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -88,22 +89,23 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "SELECT curso, disciplina, ano, semestre, carga_horaria_semanal, professor, "
+            String sql = "SELECT id, curso, disciplina, ano, semestre, carga_horaria_semanal, professor, "
                     + "ementa, competencias, metodologia, cronograma, avaliacao FROM plano_ensino WHERE id =" + id;
             ResultSet rs = stmt.executeQuery(sql);
             
             while(rs.next()) {
-                plano_ensino.setCurso(rs.getString(1));
-                plano_ensino.setDisciplina(rs.getString(2));
-                plano_ensino.setAno(rs.getInt(3));
-                plano_ensino.setSemestre(rs.getInt(4));
-                plano_ensino.setCargaHoraria(rs.getString(5));
-                plano_ensino.setProfessor(rs.getString(6));
-                plano_ensino.setEmenta(rs.getString(7));
-                plano_ensino.setCompetencias(rs.getString(8));
-                plano_ensino.setMetodologia(rs.getString(9));
-                plano_ensino.setCronograma(rs.getString(10));
-                plano_ensino.setAvaliacao(rs.getString(11));
+                plano_ensino.setID(rs.getInt(1));
+                plano_ensino.setCurso(rs.getString(2));
+                plano_ensino.setDisciplina(rs.getString(3));
+                plano_ensino.setAno(rs.getInt(4));
+                plano_ensino.setSemestre(rs.getInt(5));
+                plano_ensino.setCargaHoraria(rs.getString(6));
+                plano_ensino.setProfessor(rs.getString(7));
+                plano_ensino.setEmenta(rs.getString(8));
+                plano_ensino.setCompetencias(rs.getString(9));
+                plano_ensino.setMetodologia(rs.getString(10));
+                plano_ensino.setCronograma(rs.getString(11));
+                plano_ensino.setAvaliacao(rs.getString(12));
             }
             stmt.close();
             conexao.close();
