@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`professor` (
   `maior_titulacao` VARCHAR(45) NULL,
   `formacao_titulacao` VARCHAR(45) NULL,
   `curriculo_lattes` VARCHAR(45) NULL,
-  `atualizacao_curriculo_lates` varchar NULL,
+  `atualizacao_curriculo_lates` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -160,19 +160,19 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`plano_ensino` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`plano_ensino` (
-  `id` INT NOT NULL,
-  `curso_id` INT NOT NULL,
-  `disciplina_id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
+  `curso` VARCHAR(45) NOT NULL,
+  `disciplina` VARCHAR(45) NOT NULL,
   `ano` INT NULL,
   `semestre` INT NULL,
-  `carga_horaria_semanal` INT NULL,
-  `professor_id` INT NOT NULL,
+  `carga_horaria_semanal` VARCHAR(45) NULL,
+  `professor` VARCHAR(45) NOT NULL,
   `ementa` TEXT NULL,
   `competencias` TEXT NULL,
   `metodologia` TEXT NULL,
   `cronograma` TEXT NULL,
   `avaliacao` TEXT NULL,
-  PRIMARY KEY (`id`, `curso_id`, `disciplina_id`, `professor_id`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
