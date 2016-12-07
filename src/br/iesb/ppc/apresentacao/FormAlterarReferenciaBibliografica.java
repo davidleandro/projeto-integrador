@@ -178,7 +178,7 @@ public class FormAlterarReferenciaBibliografica extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        int valida = JOptionPane.showConfirmDialog(null, "Deseja sair sem salvar?", "Sim", JOptionPane.YES_NO_OPTION);
+        int valida = JOptionPane.showConfirmDialog(null, "Deseja sair sem salvar as alterações?", "Sim", JOptionPane.YES_NO_OPTION);
         if (valida == 0) {
             this.dispose();
         }
@@ -200,6 +200,7 @@ public class FormAlterarReferenciaBibliografica extends javax.swing.JDialog {
             referenciaBO.validar(referenciaBibliografica);
             referenciaBO.alterar(referenciaBibliografica);
             JOptionPane.showMessageDialog(this, "Alterado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
             if (e.getCause() != null) {

@@ -152,7 +152,7 @@ public class FormReferenciaBibliografica extends javax.swing.JDialog {
         ReferenciaBibliografica referenciaBibliografica = new ReferenciaBibliografica();
 
         referenciaBibliografica.setAutor(txtAutor.getText());
-        referenciaBibliografica.setTitulo(txtEditora.getText());
+        referenciaBibliografica.setTitulo(txtTitulo.getText());
         referenciaBibliografica.setEditora(txtEditora.getText());
         referenciaBibliografica.setAno(comboAno.getSelectedItem().toString());
         referenciaBibliografica.setQuantidade(txtQuantidade.getText());
@@ -163,6 +163,12 @@ public class FormReferenciaBibliografica extends javax.swing.JDialog {
             referenciaBO.validar(referenciaBibliografica);
             referenciaBO.inserir(referenciaBibliografica);
             JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+            
+            txtAutor.setText("");
+            txtTitulo.setText("");
+            txtEditora.setText("");
+            txtQuantidade.setText("");
+            
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
             if (e.getCause() != null) {
