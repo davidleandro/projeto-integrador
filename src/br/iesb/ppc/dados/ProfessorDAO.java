@@ -131,4 +131,14 @@ public class ProfessorDAO implements DAO<Professor> {
     public List<Professor> listarTurma(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Professor> listarSemestre(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Professor> listarGrade(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
