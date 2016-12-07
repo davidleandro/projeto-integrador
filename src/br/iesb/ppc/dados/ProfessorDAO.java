@@ -90,7 +90,7 @@ public class ProfessorDAO implements DAO<Professor> {
                 professor.setMaiorTitulacao(rs.getString(4));
                 professor.setFormacaoTitulacao(rs.getString(5));
                 professor.setCurriculoLates(rs.getString(6));
-                
+                professor.setAtualizacaoCurriculo(rs.getString(7));
             }
             stmt.close();
             conexao.close();
@@ -114,6 +114,7 @@ public class ProfessorDAO implements DAO<Professor> {
                 professor.setNome(rs.getString(2));
                 professor.setCpf(rs.getInt(3));
                 professor.setMaiorTitulacao(rs.getString(4));
+                professor.setFormacaoTitulacao(rs.getString(5));
                 lista.add(professor);
             }
             stmt.close();

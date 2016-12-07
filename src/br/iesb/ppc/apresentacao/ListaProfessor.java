@@ -38,7 +38,8 @@ public class ListaProfessor extends javax.swing.JDialog {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setNumRows(0);
         for (Professor professor : lista) {
-            String[] linha = {String.valueOf(professor.getId()), professor.getNome(), String.valueOf(professor.getCpf()), professor.getMaiorTitulacao()};
+            System.out.println(professor.getFormacaoTitulacao());
+            String[] linha = {String.valueOf(professor.getId()), professor.getNome(), String.valueOf(professor.getCpf()), professor.getMaiorTitulacao(), professor.getFormacaoTitulacao()};
             modelo.addRow(linha);
         }
     }
