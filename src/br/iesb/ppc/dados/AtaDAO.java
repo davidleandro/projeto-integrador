@@ -128,4 +128,14 @@ public class AtaDAO implements DAO<Ata> {
     public List<Ata> listarTurma(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Ata> listarSemestre(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Ata> listarGrade(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

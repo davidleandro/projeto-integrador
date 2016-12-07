@@ -93,4 +93,14 @@ public class AtaBO implements BO<Ata> {
     public List<Ata> listarTurma(int id) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Ata> listarSemestre(int id) throws NegocioException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Ata> listarGrade(int id) throws NegocioException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

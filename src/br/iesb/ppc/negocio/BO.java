@@ -11,4 +11,6 @@ public interface BO<T> {
     List<T> listar() throws NegocioException;
     List<T> listarTurma(int id) throws NegocioException;
     List<T> listar(int id) throws NegocioException;
+    List<T> listarSemestre(int id) throws NegocioException;
+    List<T> listarGrade(int id) throws NegocioException;
 }

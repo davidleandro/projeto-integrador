@@ -159,4 +159,14 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public List<PlanoDeEnsino> listarSemestre(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<PlanoDeEnsino> listarGrade(int id) throws DadosException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

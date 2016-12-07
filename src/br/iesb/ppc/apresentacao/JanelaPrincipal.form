@@ -70,6 +70,14 @@
             <Property name="text" type="java.lang.String" value="Grade"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemCriarGrade">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Criar / Alterar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCriarGradeActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemListarGrade">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar"/>
@@ -78,12 +86,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemListarGradeActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemCadastrarGrade">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemExcluirGrade">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar"/>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCadastrarGradeActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemExcluirGradeActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

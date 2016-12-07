@@ -10,4 +10,6 @@ public interface DAO<T> {
     List<T> listar() throws DadosException;
     List<T> listarTurma(int id) throws DadosException;
     List<T> listar(int id) throws DadosException;
+    List<T> listarSemestre(int id) throws DadosException;
+    List<T> listarGrade(int id) throws DadosException;
 }
