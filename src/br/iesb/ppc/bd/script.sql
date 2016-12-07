@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`professor` (
   `maior_titulacao` VARCHAR(45) NULL,
   `formacao_titulacao` VARCHAR(45) NULL,
   `curriculo_lattes` VARCHAR(45) NULL,
-  `atualizacao_curriculo_lates` DATE NULL,
+  `atualizacao_curriculo_lates` varchar NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
