@@ -172,7 +172,7 @@ public class FormGrade extends javax.swing.JDialog {
             
             bo.validar(gerenciarGrade);
             
-            FormGerenciarGrade formGrade = new FormGerenciarGrade(new javax.swing.JFrame(), true);
+            ListaGerenciarGrade formGrade = new ListaGerenciarGrade(new javax.swing.JFrame(), true);
             this.dispose();
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
