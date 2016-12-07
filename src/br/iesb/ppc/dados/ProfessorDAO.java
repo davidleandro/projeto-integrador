@@ -47,7 +47,7 @@ public class ProfessorDAO implements DAO<Professor> {
             pstmt.setString(4, entidade.getFormacaoTitulacao());
             pstmt.setString(5, entidade.getCurriculoLates());
             pstmt.setString(6, entidade.getAtualizacaoCurriculo());
-            pstmt.setInt(8, entidade.getId());
+            pstmt.setInt(7, entidade.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new DadosException(e.getMessage());

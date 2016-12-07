@@ -25,6 +25,15 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
     public FormAlterarProfessor(java.awt.Frame parent, boolean modal, Professor professor) {
         super(parent, modal);
         initComponents();
+        
+        txtID.setText( String.valueOf(professor.getId()) );
+        inputNome.setText( professor.getNome() );
+        inputCpf.setText( String.valueOf(professor.getCpf()) );
+        inputMaiorTitulacao.setText( professor.getMaiorTitulacao() );
+        inputFormacao.setText( professor.getFormacaoTitulacao() );
+        inputCurriculoLattes.setText( professor.getCurriculoLates() );
+        inputDataAtualizacao.setText( professor.getAtualizacaoCurriculo() );
+        
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setVisible(true);
     }
@@ -52,6 +61,7 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         inputDataAtualizacao = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -65,7 +75,7 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
 
         jLabel1.setText("Nome*");
 
-        botaoSalvar.setText("Salvar");
+        botaoSalvar.setText("Alterar");
         botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoSalvarActionPerformed(evt);
@@ -121,15 +131,21 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
 
         jLabel7.setText("Data de atualizaçao do curriculo lates:");
 
+        txtID.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel11)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botaoSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,7 +169,9 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -178,7 +196,7 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inputDataAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(botaoSalvar))
@@ -191,6 +209,7 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         Professor professor = new Professor();
 
+        professor.setId(Integer.parseInt(txtID.getText()));
         professor.setNome(inputNome.getText());
         professor.setCpf(Integer.parseInt(inputCpf.getText()));
         professor.setMaiorTitulacao(inputMaiorTitulacao.getText());
@@ -203,8 +222,8 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
 
         try {
             professorBO.validar(professor);
-            professorBO.inserir(professor);
-            JOptionPane.showMessageDialog(this, "Cadastrado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+            professorBO.alterar(professor);
+            JOptionPane.showMessageDialog(this, "Alterado com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
             // SAVE AQUI
         } catch (NegocioException e) {
             int tipoMsg = JOptionPane.WARNING_MESSAGE;
@@ -221,7 +240,7 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
     }//GEN-LAST:event_inputNomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int valida = JOptionPane.showConfirmDialog(null, "Deseja sair, sem salvar!", "Sim", JOptionPane.YES_NO_OPTION);
+        int valida = JOptionPane.showConfirmDialog(null, "Deseja sair, sem salvar as alterações?", "Sim", JOptionPane.YES_NO_OPTION);
         if (valida == 0) {
             this.dispose();
         }
@@ -265,5 +284,6 @@ public class FormAlterarProfessor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }

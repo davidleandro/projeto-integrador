@@ -45,8 +45,6 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
         jLabel34 = new javax.swing.JLabel();
         txtProfessor = new javax.swing.JTextField();
         txtSemestre = new javax.swing.JTextField();
-        jLabel35 = new javax.swing.JLabel();
-        txtPeriodo = new javax.swing.JTextField();
         txtAno = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -101,14 +99,6 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
         txtSemestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSemestreActionPerformed(evt);
-            }
-        });
-
-        jLabel35.setText("Período:");
-
-        txtPeriodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPeriodoActionPerformed(evt);
             }
         });
 
@@ -204,11 +194,7 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel37)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel32)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -264,10 +250,8 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(jLabel37)
-                    .addComponent(jLabel35)
                     .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -315,10 +299,6 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
     private void txtSemestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSemestreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSemestreActionPerformed
-
-    private void txtPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPeriodoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPeriodoActionPerformed
 
     private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
         // TODO add your handling code here:
@@ -372,7 +352,6 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel7;
@@ -393,7 +372,6 @@ public class FormPlanoDeEnsino extends javax.swing.JDialog {
     private javax.swing.JTextField txtDisciplina;
     private javax.swing.JTextArea txtEmenta;
     private javax.swing.JTextArea txtMetodologia;
-    private javax.swing.JTextField txtPeriodo;
     private javax.swing.JTextField txtProfessor;
     private javax.swing.JTextField txtSemestre;
     // End of variables declaration//GEN-END:variables
