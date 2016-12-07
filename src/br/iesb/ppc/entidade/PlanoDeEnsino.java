@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class PlanoDeEnsino implements Serializable {
     
+    private int id;
     private String curso;
     private String disciplina;
     private int ano;
@@ -19,6 +20,14 @@ public class PlanoDeEnsino implements Serializable {
 
     public String getCurso() {
         return curso;
+    }
+    
+    public int getID() {
+        return id;
+    }
+    
+    public void setID(int id) {
+        this.id = id;
     }
 
     public void setCurso(String curso) {
