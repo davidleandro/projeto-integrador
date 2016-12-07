@@ -186,3 +186,8 @@ insert into Disciplina values (null, "CONCEITOS E FUNDAMENTOS DO JORNALISMO", 4)
 insert into Disciplina values (null, "HISTÓRIA DO JORNALISMO", 4);
 insert into Disciplina values (null, "PROJETO INTEGRADOR I - FOTOGRAFIA MULTIMÍDIA", 4);
 
+
+insert into Semestre values (null, 5, 1, 1);
+insert into Semestre values (null, 10, 2, 2);
+insert into Semestre values (null, 10, 3,  3);
+insert into Semestre values (null, 8, 4, 4);
