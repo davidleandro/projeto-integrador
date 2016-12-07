@@ -224,11 +224,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemExcluirGradeActionPerformed
 
     private void menuItemListarAta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarAta1ActionPerformed
-        
+        ListaProfessor dialog = new ListaProfessor(new javax.swing.JFrame(), true);
     }//GEN-LAST:event_menuItemListarAta1ActionPerformed
 
     private void menuItemCadastrarAta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastrarAta1ActionPerformed
-         FormProfessor dialog = new FormProfessor(new javax.swing.JFrame(), true);
+        FormProfessor dialog = new FormProfessor(new javax.swing.JFrame(), true);
     }//GEN-LAST:event_menuItemCadastrarAta1ActionPerformed
 
     /**
