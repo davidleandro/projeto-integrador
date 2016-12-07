@@ -161,3 +161,28 @@ insert into Turma value (null, "CCO001", 3);
 insert into Turma value (null, "JD001", 4);
 -- select nomeCurso, modalidadeTipo, id_Curso from Curso, Modalidade where Modalidade_id = id_Modalidade and modalidadeTipo = 2;
 -- select nomeTurma from Curso, Turma where id_Curso = 1 and id_Curso = Curso_id;
+
+insert into Grade values (null, 1);
+insert into Grade values (null, 2);
+insert into Grade values (null, 3);
+insert into Grade values (null, 4);
+
+
+insert into Disciplina values (null, "ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES", 1);
+insert into Disciplina values (null, "ARQUITETURA DE COMPUTADORES", 1);
+insert into Disciplina values (null, "ENGENHARIA DE SOFTWARE", 1);
+
+insert into Disciplina values (null, "PRÁTICAS DE ENGENHARIA", 2);
+insert into Disciplina values (null, "QUÍMICA GERAL", 2);
+insert into Disciplina values (null, "TÓPICOS DE FÍSICA", 2);
+
+
+insert into Disciplina values (null, "INTRODUÇÃO À CIÊNCIA DA COMPUTAÇÃO", 3);
+insert into Disciplina values (null, "FUNDAMENTOS DE LÓGICA", 3);
+insert into Disciplina values (null, "CÁLCULO I", 3);
+
+
+insert into Disciplina values (null, "CONCEITOS E FUNDAMENTOS DO JORNALISMO", 4);
+insert into Disciplina values (null, "HISTÓRIA DO JORNALISMO", 4);
+insert into Disciplina values (null, "PROJETO INTEGRADOR I - FOTOGRAFIA MULTIMÍDIA", 4);
+
