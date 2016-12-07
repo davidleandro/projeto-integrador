@@ -15,8 +15,8 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         Connection conexao = ConexaoBD.getConexao();
         
         try {
-            String sql = "INSERT INTO plano_ensino(curso_id, disciplina_id, ano, semestre, carga_horaria_semanal, "
-                    + "professor_id, ementa, competencias, metodologia, cronograma, avaliação) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO plano_ensino(curso, disciplina, ano, semestre, carga_horaria_semanal, "
+                    + "professor, ementa, competencias, metodologia, cronograma, avaliacao) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             
             pstmt.setString(1, entidade.getCurso());
@@ -42,9 +42,9 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         Connection conexao = ConexaoBD.getConexao();
         
         try {
-            String sql = "UPDATE plano_ensino SET curso_id = ?, disciplina_id = ?, ano = ?, semestre = ?, "
-                    + "carga_horaria_semanal = ?, professor_id = ?, ementa = ?, competencias = ?, "
-                    + "metodologia = ?, cronograma = ?, avaliação = ?,  WHERE id = ?";
+            String sql = "UPDATE plano_ensino SET curso = ?, disciplina = ?, ano = ?, semestre = ?, "
+                    + "carga_horaria_semanal = ?, professor = ?, ementa = ?, competencias = ?, "
+                    + "metodologia = ?, cronograma = ?, avaliacao = ?,  WHERE id = ?";
             
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             
@@ -88,8 +88,8 @@ public class PlanoDeEnsinoDAO implements DAO<PlanoDeEnsino>  {
         
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "SELECT curso_id, disciplina_id, ano, semestre, carga_horaria_semanal, professor_id, "
-                    + "ementa, competencias, metodologia, cronograma, avaliação FROM plano_ensino WHERE curso_id =" + id;
+            String sql = "SELECT curso, disciplina, ano, semestre, carga_horaria_semanal, professor, "
+                    + "ementa, competencias, metodologia, cronograma, avaliacao FROM plano_ensino WHERE id =" + id;
             ResultSet rs = stmt.executeQuery(sql);
             
             while(rs.next()) {

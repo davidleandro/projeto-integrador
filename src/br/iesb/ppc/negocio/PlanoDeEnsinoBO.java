@@ -68,6 +68,8 @@ public class PlanoDeEnsinoBO implements BO<PlanoDeEnsino> {
         try {
             dao.inserir(entidade);
         } catch (DadosException e) {
+            System.out.println(e.getCause());
+            System.out.println(e.getMessage());
             throw new NegocioException("Erro ao inserir", e);
         }
     }
