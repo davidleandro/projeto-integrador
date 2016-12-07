@@ -63,11 +63,11 @@ public class ListaProfessor extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Codigo", "Data", "Assunto", "Sede", "Descriçoes", "Ações"
+                "Codigo", "Nome", "CPF", "Maior Titulaçao", "Formaçao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
