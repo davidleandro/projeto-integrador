@@ -1,6 +1,7 @@
 package br.iesb.ppc.dados;
 
 import br.iesb.ppc.entidade.Ata;
+import br.iesb.ppc.entidade.Professor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -9,22 +10,21 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.ArrayList;
 
-public class AtaDAO implements DAO<Ata> {
+public class ProfessorDAO implements DAO<Professor> {
 
-    public void inserir(Ata entidade) throws DadosException {
+    public void inserir(Professor entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
 
         try {
-            String sql = "INSERT INTO ata(data, horaInicio, horaFim, assunto, sede, sala, descricao) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into professor (nome, cpf, maior_titulacao, formacao_titulacao, curriculo_lattes, atualizacao_curriculo_lates) values (?,?,?,?,?,?)";
             PreparedStatement pstmt = conexao.prepareStatement(sql);
 
-            pstmt.setString(1, entidade.getData());
-            pstmt.setString(2, entidade.getHoraInicio());
-            pstmt.setString(3, entidade.getHoraFim());
-            pstmt.setString(4, entidade.getAssunto());
-            pstmt.setString(5, entidade.getSede());
-            pstmt.setString(6, entidade.getSala());
-            pstmt.setString(7, entidade.getDescricao());
+            pstmt.setString(1, entidade.getNome());
+            pstmt.setInt(2, entidade.getCpf());
+            pstmt.setString(3, entidade.getMaiorTitulacao());
+            pstmt.setString(4, entidade.getFormacaoTitulacao());
+            pstmt.setString(5, entidade.getCurriculoLates());
+            pstmt.setString(6, entidade.getAtualizacaoCurriculo());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -33,21 +33,20 @@ public class AtaDAO implements DAO<Ata> {
         }
     }
 
-    public void alterar(Ata entidade) throws DadosException {
+    public void alterar(Professor entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
 
         try {
-            String sql = "UPDATE ata SET data = ?, horaInicio = ?, horaFim = ?, assunto = ?, sede = ?, sala = ?, descricao = ? WHERE id = ?";
+            String sql = "UPDATE professor SET nome = ?, cpf = ?, maior_titulacao = ?, formacao_titulacao = ?, curriculo_lattes = ?, atualizacao_curriculo_lates = ? WHERE id = ?";
 
             PreparedStatement pstmt = conexao.prepareStatement(sql);
 
-            pstmt.setString(1, entidade.getData());
-            pstmt.setString(2, entidade.getHoraInicio());
-            pstmt.setString(3, entidade.getHoraFim());
-            pstmt.setString(4, entidade.getAssunto());
-            pstmt.setString(5, entidade.getSede());
-            pstmt.setString(6, entidade.getSala());
-            pstmt.setString(7, entidade.getDescricao());
+            pstmt.setString(1, entidade.getNome());
+            pstmt.setInt(2, entidade.getCpf());
+            pstmt.setString(3, entidade.getMaiorTitulacao());
+            pstmt.setString(4, entidade.getFormacaoTitulacao());
+            pstmt.setString(5, entidade.getCurriculoLates());
+            pstmt.setString(6, entidade.getAtualizacaoCurriculo());
             pstmt.setInt(8, entidade.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -55,7 +54,7 @@ public class AtaDAO implements DAO<Ata> {
         }
     }
 
-    public void excluir(Ata entidade) throws DadosException {
+    public void excluir(Professor entidade) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
         try {
             String sql = "delete from ata where id = ?";
@@ -69,49 +68,53 @@ public class AtaDAO implements DAO<Ata> {
         }
     }
 
-    public Ata consultar(int id) throws DadosException {
+    public Professor consultar(int id) throws DadosException {
         Connection conexao = ConexaoBD.getConexao();
-        Ata ata = new Ata();
-
+        Professor professor = new Professor();
+//`id` INT NOT NULL auto_increment,
+//  `nome` VARCHAR(45) NULL,
+//  `cpf` INT NULL,
+//  `maior_titulacao` VARCHAR(45) NULL,
+//  `formacao_titulacao` VARCHAR(45) NULL,
+//  `curriculo_lattes` VARCHAR(45) NULL,
+//  `atualizacao_curriculo_lates` varchar(100) NULL,
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "SELECT id, data, horaInicio, horaFim, assunto, sede, sala, descricao FROM ata WHERE id =" + id;
+            String sql = "SELECT id, nome, cpf, maior_titulacao, formacao_titulacao, curriculo_lattes, atualizacao_curriculo_lates FROM professor WHERE id =" + id;
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                ata.setId(rs.getInt(1));
-                ata.setData(rs.getString(2));
-                ata.setHoraInicio(rs.getString(3));
-                ata.setHoraFim(rs.getString(4));
-                ata.setAssunto(rs.getString(5));
-                ata.setSede(rs.getString(6));
-                ata.setSala(rs.getString(7));
-                ata.setDescricao(rs.getString(8));
+                professor.setId(rs.getInt(1));
+                professor.setNome(rs.getString(2));
+                professor.setCpf(rs.getInt(3));
+                professor.setMaiorTitulacao(rs.getString(4));
+                professor.setFormacaoTitulacao(rs.getString(5));
+                professor.setCurriculoLates(rs.getString(6));
+                
             }
             stmt.close();
             conexao.close();
         } catch (SQLException e) {
             throw new DadosException(e.getMessage());
         }
-        return ata;
+        return professor;
     }
 
-    public List<Ata> listar() throws DadosException {
+    public List<Professor> listar() throws DadosException {
 
-        List<Ata> lista = new ArrayList<Ata>();
+        List<Professor> lista = new ArrayList<Professor>();
         Connection conexao = ConexaoBD.getConexao();
         try {
             Statement stmt = conexao.createStatement();
-            String sql = "select id,data, assunto, sede, descricao from ata";
+            String sql = "select id, nome, cpf, maior_titulacao, formacao_titulacao from professor";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Ata ata = new Ata();
-                ata.setId(rs.getInt(1));
-                ata.setData(rs.getString(2));
-                ata.setAssunto(rs.getString(3));
-                ata.setSede(rs.getString(4));
-                ata.setDescricao(rs.getString(5));
-                lista.add(ata);
+                Professor professor = new Professor();
+                professor.setId(rs.getInt(1));
+                professor.setNome(rs.getString(2));
+                professor.setCpf(rs.getInt(3));
+                professor.setMaiorTitulacao(rs.getString(4));
+                lista.add(professor);
             }
             stmt.close();
             conexao.close();
@@ -121,11 +124,11 @@ public class AtaDAO implements DAO<Ata> {
         return lista;
     }
 
-    public List<Ata> listar(int id) throws DadosException {
+    public List<Professor> listar(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<Ata> listarTurma(int id) throws DadosException {
+    public List<Professor> listarTurma(int id) throws DadosException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
